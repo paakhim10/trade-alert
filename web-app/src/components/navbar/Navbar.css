@@ -1,0 +1,21 @@
+.navbar-nav .nav-link.active {
+  color: red !important;
+}
+
+.nav-link:hover {
+  color: red !important;
+}
+
+.navbar {
+  margin: 0 !important;
+  padding: 0 !important;
+  background-color: var(--background-color);
+}
+
+.navbar-brand img {
+  height: 80px;
+}
+
+.navbar-brand h1 {
+  color: red;
+}
