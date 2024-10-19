@@ -12,7 +12,7 @@ const Hero = () => {
     >
       <Container className="hero-left-section d-flex justify-content-center align-content-center flex-column">
         <div className="hero-upper-section mb-3">
-          <h1>Stay Ahead of the Market with Real Time Alerts</h1>
+          <h2>Stay Ahead of the Market with Real Time Alerts</h2>
         </div>
         <div className="hero-lower-section">
           <ul className="list-unstyled">

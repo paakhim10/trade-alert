@@ -1,0 +1,172 @@
+.about-section {
+  margin-top: 2.2rem;
+}
+
+.about-upper-left-container {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+}
+
+.about-upper-left-heading {
+  border: 1px solid black;
+  padding: 0.5rem 1.5rem 0; /* Removed last value since it's 0 */
+  border-radius: 1rem;
+  background-color: var(--color-light-pink);
+}
+
+.about-upper-left-heading h2 {
+  font-size: 2.5rem;
+}
+
+.about-upper-right-container {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.about-upper-right-container div {
+  font-weight: 400;
+}
+
+.about-upper-section {
+  margin-bottom: 2rem;
+}
+
+.about-lower-section {
+  margin: 0 auto;
+}
+
+.about-feature-container {
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  width: 45%;
+}
+
+.about-lower-section-row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.about-feature-container:hover {
+  transform: translateY(-5px);
+}
+
+/* Individual card styles */
+.about-feature-container:nth-child(1) {
+  background-color: var(--color-secondary);
+}
+
+.about-feature-container:nth-child(1) h4 {
+  color: var(--color-light);
+}
+
+.about-feature-container:nth-child(1) p {
+  color: var(--color-primary);
+}
+
+.about-feature-container:nth-child(2) {
+  background-color: var(--color-light);
+}
+
+.about-feature-container:nth-child(2) h4 {
+  color: var(--color-primary);
+}
+
+.about-feature-container:nth-child(2) p {
+  color: var(--color-secondary);
+}
+
+.about-feature-container:nth-child(3) {
+  background-color: var(--color-primary);
+}
+
+.about-feature-container:nth-child(3) h4 {
+  color: var(--color-light);
+}
+
+.about-feature-container:nth-child(3) p {
+  color: var(--color-secondary);
+}
+
+.about-feature-container:nth-child(4) {
+  background-color: var(--color-secondary);
+}
+
+.about-feature-container:nth-child(4) h4 {
+  color: var(--color-primary);
+}
+
+.about-feature-container:nth-child(4) p {
+  color: var(--color-light);
+}
+
+.about-feature-container:nth-child(5) {
+  background-color: var(--color-light);
+}
+
+.about-feature-container:nth-child(5) h4 {
+  color: var(--color-secondary);
+}
+
+.about-feature-container:nth-child(5) p {
+  color: var(--color-primary);
+}
+
+.about-feature-container:nth-child(6) {
+  background-color: var(--color-primary);
+}
+
+.about-feature-container:nth-child(6) h4 {
+  color: var(--color-secondary);
+}
+
+.about-feature-container:nth-child(6) p {
+  color: var(--color-light);
+}
+
+@media screen and (max-width: 768px) {
+  .about-feature-container {
+    text-align: center;
+  }
+  .about-upper-left-container {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .about-upper-right-container {
+    width: 100%;
+  }
+
+  .about-upper-left-heading h2 {
+    font-size: 2rem;
+  }
+
+  .about-upper-right-container div {
+    margin-top: 1rem;
+    font-size: 1rem;
+    text-align: justify !important;
+  }
+
+  .about-lower-section-row {
+    flex-direction: column;
+    justify-content: center;
+    width: 90%;
+  }
+
+  .about-feature-container {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .about-feature-container:nth-child(odd) {
+    margin-right: 0; /* Add space between cards */
+  }
+}
