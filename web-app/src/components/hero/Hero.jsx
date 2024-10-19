@@ -1,6 +1,5 @@
 import Container from "react-bootstrap/Container";
 import "./Hero.css";
-import heroImage from "../../assets/images/hero.svg";
 
 const Hero = () => {
   return (
@@ -37,7 +36,11 @@ const Hero = () => {
         </div>
       </Container>
       <Container className="hero-right-section">
-        <img src={heroImage} alt="Hero Image" className="w-100 h-100" />
+        <img
+          src="/assets/images/hero.svg"
+          alt="Hero Image"
+          className="w-100 h-100"
+        />
       </Container>
     </Container>
   );

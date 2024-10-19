@@ -1,7 +1,7 @@
 import { Navbar, Nav, Container, Offcanvas } from "react-bootstrap";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import logo from "../../assets/images/logo.svg";
+
 import "./Navbar.css";
 
 const Header = () => {
@@ -52,7 +52,7 @@ const Header = () => {
       <Navbar key="md" expand="md" className="bg-body-danger" sticky="top">
         <Container fluid>
           <Navbar.Brand href="/" className="d-flex align-items-center">
-            <img src={logo} alt="Brand Logo" />
+            <img src="/assets/images/logo.svg" alt="Brand Logo" />
             <h1>Trade Alert</h1>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-md`} />
@@ -66,7 +66,11 @@ const Header = () => {
                 id={`offcanvasNavbarLabel-expand-md`}
                 className="text-color-primary"
               >
-                <img src={logo} alt="Brand Logo" style={{ height: "50px" }} />
+                <img
+                  src="/assets/images/logo.svg"
+                  alt="Brand Logo"
+                  style={{ height: "50px" }}
+                />
                 Trade Alert
               </Offcanvas.Title>
             </Offcanvas.Header>
