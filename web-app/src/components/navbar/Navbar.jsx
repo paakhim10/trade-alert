@@ -36,16 +36,17 @@ const Header = () => {
 
   // Use effect to initially set the Home link as active
   useEffect(() => {
-    const homeLink = document.getElementById("navbar-home-link");
-    if (homeLink) {
-      homeLink.classList.add("active");
+    const currentPath = window.location.pathname;
+    if (currentPath === "/") {
+      setActiveLink("navbar-home-link");
+    } else if (currentPath === "/auth") {
+      setActiveLink("navbar-auth-link");
     }
   }, []);
 
   // Function to add 'active' class to clicked link and remove from previous link
   useEffect(() => {
     const links = document.querySelectorAll(".nav-link");
-
     links.forEach((link) => {
       if (link.id === activeLink) {
         link.classList.add("active");
