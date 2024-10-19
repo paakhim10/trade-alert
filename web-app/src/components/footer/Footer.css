@@ -1,6 +1,6 @@
 .footer {
-  background-color: red;
-  color: white;
+  background-color: var(--color-primary) !important;
+  color: var(--color-light);
   text-align: center;
   padding: 10px;
   width: 100%;

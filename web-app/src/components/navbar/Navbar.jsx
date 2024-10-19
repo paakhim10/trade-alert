@@ -62,7 +62,11 @@ const Header = () => {
             placement="end"
           >
             <Offcanvas.Header closeButton>
-              <Offcanvas.Title id={`offcanvasNavbarLabel-expand-md`}>
+              <Offcanvas.Title
+                id={`offcanvasNavbarLabel-expand-md`}
+                className="text-color-primary"
+              >
+                <img src={logo} alt="Brand Logo" style={{ height: "50px" }} />
                 Trade Alert
               </Offcanvas.Title>
             </Offcanvas.Header>

@@ -1,15 +1,16 @@
 :root {
-  --primary-color: #74b9ff; /* Light blue */
-  --secondary-color: #171c28; /* Dark navy */
-  --background-color: rgb(255, 255, 255); /* Light grey */
-  --text-color: #000000; /* Black */
-  --navbar-bg-color: #0dcaf0; /* Light blue */
-  --navbar-text-color: black; /* White */
-  --footer-bg-color: #0dcaf0; /* Light blue */
-  --footer-text-color: black; /* White */
-  --heading-color: #000000; /* Black */
-  --scrollbar-track-color: #b2bec3; /* Light grey */
-  --scrollbar-thumb-color: #74b9ff; /* Light blue */
+  --background-color: rgb(255, 255, 255);
+  --color-primary: #ff6666;
+  --color-secondary: #3d3d4e;
+  --color-light: #e5e5e5;
+  --color-light-pink: #ffc0c0;
+  --color-dark-red: #c04d4d;
+  --color-success: #4caf50;
+  --color-error: #f44336;
+  --color-warning: #ffc107;
+  --color-black: #000000;
+  --primary-font: "Roboto", sans-serif;
+  --secondary-font: "Inria Sans", sans-serif;
 }
 
 * {
@@ -19,7 +20,42 @@
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: var(--primary-font);
   background-color: var(--background-color);
-  color: var(--text-color);
+}
+
+.text-color-primary {
+  color: var(--color-primary);
+}
+
+.text-color-secondary {
+  color: var(--color-secondary);
+}
+
+.text-color-light {
+  color: var(--color-light);
+}
+
+.text-color-light-pink {
+  color: var(--color-light-pink);
+}
+
+.text-color-dark-red {
+  color: var(--color-dark-red);
+}
+
+.text-color-success {
+  color: var(--color-success);
+}
+
+.text-color-error {
+  color: var(--color-error);
+}
+
+.text-color-warning {
+  color: var(--color-warning);
+}
+
+.text-color-black {
+  color: var(--color-black);
 }

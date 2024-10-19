@@ -1,11 +1,10 @@
 import Container from "react-bootstrap/Container";
+import Hero from "../../components/hero/Hero";
 
 const Home = () => {
   return (
     <>
-      <Container fluid id="hero-section" style={{ height: "50vh" }}>
-        Hero
-      </Container>
+      <Hero />
       <Container fluid id="about" style={{ height: "50vh" }}>
         About
       </Container>
