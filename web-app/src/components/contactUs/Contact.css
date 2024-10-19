@@ -1,0 +1,135 @@
+.contact-us-section {
+  margin-top: 3.5rem;
+  margin-bottom: 2rem;
+}
+
+.contact-us-upper-left-container {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+}
+
+.contact-us-upper-left-heading {
+  border: 1px solid black;
+  padding: 0.5rem 1.5rem 0; /* Removed last value since it's 0 */
+  border-radius: 1rem;
+  background-color: var(--color-light-pink);
+  /* margin-right: 3rem; */
+  margin-left: 4rem;
+}
+
+.contact-us-upper-left-heading h2 {
+  font-size: 2.5rem;
+}
+
+.contact-us-upper-section {
+  margin-bottom: 2rem;
+}
+.contact-us-upper-right-container {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.contact-us-upper-right-container div {
+  font-weight: 400;
+}
+
+.contact-us-lower-section {
+  background-color: var(
+    --color-secondary
+  ); /* Background color for the container */
+  padding: 30px;
+  border-radius: 8px; /* Optional: Rounded corners */
+  width: 100%;
+}
+
+.red-alert-heading {
+  color: var(--color-primary);
+  font-weight: 700;
+  font-family: var(--secondary-font);
+}
+
+.contact-form {
+  width: 500px; /* Set width for the form */
+}
+
+.form-control {
+  background-color: #8f8fb0; /* Background color for input boxes */
+  border: 1px solid #721c24; /* Optional: Border color to match theme */
+  color: #ffc0c0;
+  padding: 10px;
+}
+
+.btn-primary {
+  background-color: #ffc0c0;
+  border-color: transparent;
+  color: #3d3d4e;
+}
+
+.left-section {
+  flex: 1;
+}
+
+.right-section {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end; /* Align form to the right */
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #ffc0c0 !important; /* Change this to any color you want */
+  font-weight: 400;
+}
+
+@media screen and (max-width: 768px) {
+  .contact-us-upper-left-container {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .contact-us-upper-left-heading {
+    margin-left: 0;
+  }
+  .contact-us-upper-left-heading h2 {
+    font-size: 2rem;
+  }
+
+  .contact-us-upper-right-container {
+    width: 100%;
+  }
+
+  .contact-us-upper-right-container div {
+    margin-top: 1rem;
+    font-size: 1rem;
+    text-align: justify !important;
+  }
+
+  .contact-us-lower-section-row {
+    flex-direction: column;
+    justify-content: center;
+    width: 90%;
+  }
+
+  .contact-us-lower-section {
+    flex-direction: column;
+  }
+
+  .right-section {
+    justify-content: center;
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  .contact-form {
+    width: 100%;
+  }
+  .contact-us-section {
+    margin-bottom: 2rem;
+  }
+}
