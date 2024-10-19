@@ -19,6 +19,10 @@
   background-color: var(--background-color);
 }
 
+.navbar-brand {
+  cursor: pointer;
+}
+
 .navbar-brand img {
   height: 90px;
 }

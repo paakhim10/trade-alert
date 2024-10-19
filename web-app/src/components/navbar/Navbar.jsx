@@ -9,15 +9,23 @@ const Header = () => {
 
   const [activeLink, setActiveLink] = useState("navbar-home-link"); // State to track active link
 
-  const handleScrollToSection = (e, sectionId) => {
+  const handleScrollToSection = (e, sectionId, offset = 100) => {
     e.preventDefault(); // Prevent default link behavior
     navigate("/"); // Navigate to home page first
-
+    console.log("Navigating to home page first");
     // Delay scroll to allow time for the navigation to complete
     setTimeout(() => {
       const section = document.getElementById(sectionId);
       if (section) {
-        section.scrollIntoView({ behavior: "smooth" });
+        // Calculate position with offset
+        const sectionPosition =
+          section.getBoundingClientRect().top + window.scrollY;
+        const offsetPosition = sectionPosition - offset; // Scroll to slightly above the section
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
       }
     }, 100); // 100ms delay for smooth transition
   };
@@ -51,7 +59,13 @@ const Header = () => {
     <>
       <Navbar key="md" expand="md" className="bg-body-danger" sticky="top">
         <Container fluid>
-          <Navbar.Brand href="/" className="d-flex align-items-center">
+          <Navbar.Brand
+            onClick={(e) => {
+              handleScrollToSection(e, "hero-section");
+              handleActiveLink("navbar-home-link");
+            }}
+            className="d-flex align-items-center "
+          >
             <img src="/assets/images/logo.svg" alt="Brand Logo" />
             <h1>Trade Alert</h1>
           </Navbar.Brand>
@@ -77,10 +91,11 @@ const Header = () => {
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
                 <Nav.Link
-                  as={NavLink}
-                  to="/"
                   id="navbar-home-link"
-                  onClick={() => handleActiveLink("navbar-home-link")}
+                  onClick={(e) => {
+                    handleScrollToSection(e, "hero-section");
+                    handleActiveLink("navbar-home-link");
+                  }}
                 >
                   Home
                 </Nav.Link>
