@@ -36,6 +36,10 @@ export const signup = AsyncHandler(async (req, res, next) => {
     stage: "Stage_EmailVerification",
   });
 
+  if (!newUser) {
+    throw new ApiError(400, "Error creating user");
+  }
+
   return res
     .status(201)
     .json(new ApiResponse(201, "User created successfully"));
