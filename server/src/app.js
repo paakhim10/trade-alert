@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import morgan from "morgan";
 import logger from "./utils/logger.js";
+import AuthRouter from "./routers/auth.router.js";
 
 dotenv.config();
 
@@ -45,5 +46,6 @@ app.use(
 );
 
 // Routes
+app.use("/api/v1/auth", AuthRouter);
 
 export default app;

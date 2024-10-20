@@ -21,12 +21,7 @@ const unregisteredUserSchema = new Schema({
     // only following values are allowed: "Stage_EmailVerification", "Stage_AddCompanyStock", "Stage_SelectNewsPartner", "Stage_SelectAlertPreference"
     type: String,
     required: true,
-    enum: [
-      "Stage_EmailVerification",
-      "Stage_AddCompanyStock",
-      "Stage_SelectNewsPartner",
-      "Stage_SelectAlertPreference",
-    ],
+    enum: ["Stage_EmailVerification", "Stage_AddUserDetails"],
   },
   companyStocks: [
     {
@@ -72,7 +67,7 @@ const unregisteredUserSchema = new Schema({
 });
 
 unregisteredUserSchema.pre("save", async function (next) {
-  if (!this.isModified("password") || this.isNew) {
+  if (!this.isModified("password") || !this.isNew) {
     return next();
   }
 

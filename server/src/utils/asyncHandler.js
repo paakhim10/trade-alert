@@ -1,6 +1,6 @@
-import logger from "./logger";
+import logger from "./logger.js";
 
-export const AsyncHandler = (fn) => async (req, res, next) => {
+const AsyncHandler = (fn) => async (req, res, next) => {
   try {
     return await fn(req, res, next);
   } catch (error) {
@@ -11,3 +11,5 @@ export const AsyncHandler = (fn) => async (req, res, next) => {
     });
   }
 };
+
+export default AsyncHandler;
