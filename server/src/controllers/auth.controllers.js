@@ -1,9 +1,11 @@
+import path from "path";
 import ApiError from "../utils/apiError.js";
 import ApiResponse from "../utils/apiResponse.js";
 import AsyncHandler from "../utils/asyncHandler.js";
 import logger from "../utils/logger.js";
 import { UnregisteredUser } from "../models/unregisteredUser.model.js";
 import { User } from "../models/user.model.js";
+import { sendConfirmationMail } from "../utils/sendMail.js";
 
 export const signup = AsyncHandler(async (req, res, next) => {
   logger.debug("Signup route");
@@ -40,7 +42,39 @@ export const signup = AsyncHandler(async (req, res, next) => {
     throw new ApiError(400, "Error creating user");
   }
 
+  // Send email verification
+  await sendConfirmationMail(email, newUser._id);
+
   return res
     .status(201)
-    .json(new ApiResponse(201, "User created successfully"));
+    .json(new ApiResponse(201, "Please verify your email to continue"));
+});
+
+export const confirmEmail = AsyncHandler(async (req, res, next) => {
+  logger.debug("Confirm email route");
+  const { id } = req.query;
+
+  if (!id) {
+    throw new ApiError(400, "Invalid request");
+  }
+
+  const unregisteredUser = await UnregisteredUser.findById(id);
+  if (
+    !unregisteredUser ||
+    unregisteredUser.stage !== "Stage_EmailVerification"
+  ) {
+    throw new ApiError(404, "User not found");
+  }
+
+  unregisteredUser.stage = "Stage_AddUserDetails";
+  await unregisteredUser.save();
+
+  // Serve the HTML file as the response
+  const confirmationPagePath = path.join(
+    path.resolve(),
+    "src",
+    "templates",
+    "confirmedEmailTemplate.html"
+  );
+  res.status(200).sendFile(confirmationPagePath);
 });
