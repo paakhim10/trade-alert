@@ -27,6 +27,19 @@ export async function sendConfirmationMail(email, userId) {
       to: email,
       subject: "Confirm Your Email Address",
       html: htmlContent,
+      attachments: [
+        {
+          filename: "logo.svg", // The name of the file in the email
+          path: path.join(
+            path.resolve(),
+            "src",
+            "templates",
+            "assets",
+            "logo.png"
+          ), // The path to the image file
+          cid: "logo@cid", // Unique content ID for inline images
+        },
+      ],
     };
 
     // Send the email
