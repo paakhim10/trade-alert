@@ -21,7 +21,7 @@ Red Alert is a notification system that keeps users informed about critical news
 
 **Stay Ahead in the Game**: Users will be a step ahead in gaining relevant information about their stock portfolio among other retail investors.<br>
 **Time-Saving**: Users would not have to read irrelevant articles about the things that they do not need to worry about.<br>
-**Decision Making**: Showing only the news with priority level will not manipulate the user about a certain stock, it will give the user the ability to read the articile and make decision of buying and selling themselves. 
+**Decision Making**: Showing only the news with priority level will not manipulate the user about a certain stock, it will give the user the ability to read the articile and make decision of buying and selling themselves.
 
 ## Why Red Alert?
 
@@ -43,6 +43,6 @@ Red Alert is a notification system that keeps users informed about critical news
 - Clone the project
 - Install all the dependencies in the frontend and backend folder using npm install command from your console.
 - Create your .env files in both frontend and backend
-- Inside your frontend .env write VITE_SERVER_URL=(something if you want to host) and VITE_LOCALHOST = http://localhost:8000
-- Inside your backend .env write PORT=8000, EMAIL_ID= Your email (for verification mail during sign up), APP_PASSWORD = (password of your google email service for nodemailer), CORS_ORIGIN = http://localhost:5173, MONGODB_URI = )(MongoDB atlas URL), JWT_SECRET = 1234 (JWT Token for your)
+- Inside your frontend .env write VITE_SERVER_URL=(something if you want to host) and VITE_LOCALHOST = `http://localhost:8000`
+- Inside your backend .env write PORT=8000, EMAIL_ID= Your email (for verification mail during sign up), APP_PASSWORD = (password of your google email service for nodemailer), CORS_ORIGIN = `http://localhost:5173`, MONGODB_URI = )(MongoDB atlas URL), JWT_SECRET = 1234 (JWT Token for your)
 - Run the frontend and backend using npm run dev command from the console.
