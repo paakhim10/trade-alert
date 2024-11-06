@@ -1,8 +1,10 @@
 import Header from "../../components/common/header/Header";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import "./Auth.css";
-import { Link } from "react-router-dom";
 import { useState } from "react";
+import apiCall from "../../utils/axiosInstance.js";
+import { toast } from "react-toastify";
+import * as validate from "../../utils/validation.js";
 
 const Login = (props) => {
   return (
@@ -42,6 +44,42 @@ const Login = (props) => {
 };
 
 const SignUp = (props) => {
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (formData.password !== formData.confirmPassword) {
+      toast.error("Passwords do not match");
+      return;
+    }
+    if (formData.password.length < 6) {
+      toast.error("Password should be atleast 6 characters long");
+      return;
+    }
+    if (!validate.validEmail(formData.email)) {
+      toast.error("Invalid Email");
+      return;
+    }
+
+    const response = await apiCall("POST", "api/v1/auth/signup", formData);
+    console.log("response from handlesubmit", response);
+    if (response.success) {
+      toast.success("Please verify your email to continue");
+      props.setAuthMode("login");
+    } else {
+      toast.error(response.message);
+    }
+  };
+
   return (
     <>
       <Header heading="Sign Up" />
@@ -49,16 +87,31 @@ const SignUp = (props) => {
         <Row className="justify-content-center">
           <div className="login-form-container">
             <Form>
-              <Form.Group controlId="formBasicEmail">
-                <Form.Control type="email" placeholder="Email" />
+              <Form.Group>
+                <Form.Control
+                  name="email"
+                  type="email"
+                  placeholder="Email"
+                  onChange={handleChange}
+                />
               </Form.Group>
-              <Form.Group controlId="formBasicPassword">
-                <Form.Control type="password" placeholder="Password" />
+              <Form.Group>
+                <Form.Control
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                  onChange={handleChange}
+                />
               </Form.Group>
-              <Form.Group controlId="formBasicPassword">
-                <Form.Control type="password" placeholder="Confirm Password" />
+              <Form.Group>
+                <Form.Control
+                  name="confirmPassword"
+                  type="password"
+                  placeholder="Confirm Password"
+                  onChange={handleChange}
+                />
               </Form.Group>
-              <Button variant="primary" type="submit">
+              <Button variant="primary" type="submit" onClick={handleSubmit}>
                 Sign Up
               </Button>
             </Form>
