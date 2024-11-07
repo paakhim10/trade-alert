@@ -1,14 +1,11 @@
-import {
-  Container,
-  Row,
-  Form,
-  Button,
-  ListGroup,
-  InputGroup,
-} from "react-bootstrap";
+import { Container, Row, Form, Button, ListGroup } from "react-bootstrap";
 import { useState } from "react";
 import "./Register.css";
 import Header from "../../components/common/header/Header";
+import apiCall from "../../utils/axiosInstance";
+import { toast } from "react-toastify";
+import { MdDelete } from "react-icons/md";
+import { Spinner } from "react-bootstrap";
 
 const UserInfoForm = (props) => {
   const handleChange = (e) => {
@@ -33,6 +30,7 @@ const UserInfoForm = (props) => {
                   placeholder="Full Name"
                   onChange={handleChange}
                   value={props.formData.fullName}
+                  style={{ color: "white" }}
                 />
               </Form.Group>
               <Form.Group controlId="formBasicPhoneNumber">
@@ -42,6 +40,7 @@ const UserInfoForm = (props) => {
                   placeholder="Phone Number"
                   onChange={handleChange}
                   value={props.formData.phoneNumber}
+                  style={{ color: "white" }}
                 />
               </Form.Group>
 
@@ -67,39 +66,76 @@ const UserInfoForm = (props) => {
 };
 
 const AddCompanyInfoForm = (props) => {
-  const [companySuggestions, setCompanySuggestions] = useState([
-    "Apple",
-    "Microsoft",
-  ]);
-  const [selectedCompanies, setSelectedCompanies] = useState([
-    "Apple",
-    "Microsoft",
-  ]);
+  const [companySuggestions, setCompanySuggestions] = useState([]);
   const [query, setQuery] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleInputChange = async (e) => {
     const input = e.target.value;
     setQuery(input);
 
     if (input.length > 2) {
-      try {
-        const response = await axios.get(`/api/companies?query=${input}`);
-        setCompanySuggestions(response.data); // API response should be an array of company names
-      } catch (error) {
-        console.error("Error fetching company suggestions:", error);
-        setCompanySuggestions([]);
+      setLoading(true);
+      const response = await apiCall(
+        "GET",
+        `/api/v1/company/getSuggestion?query=${input}`
+      );
+      setLoading(false);
+      if (response.success) {
+        setCompanySuggestions(response.data);
       }
+      console.log("Company suggestions:", response);
     } else {
       setCompanySuggestions([]);
     }
   };
 
   const handleCompanySelect = (company) => {
-    if (!selectedCompanies.includes(company)) {
-      setSelectedCompanies([...selectedCompanies, company]);
+    console.log("Company:", company);
+    company.quantity = "";
+    company.priority = "";
+    if (!props.formData.companies.some((c) => c._id === company._id)) {
+      props.setFormData({
+        ...props.formData,
+        companies: [...props.formData.companies, company],
+      });
+    } else {
+      toast.error("Company already added");
     }
+
     setQuery(""); // Clear the input field after selection
     setCompanySuggestions([]); // Clear suggestions
+  };
+
+  const handleCompanyPriorityAndQuantity = (e, company) => {
+    // Create a new companies array with updated company data
+    const updatedCompanies = props.formData.companies.map((c) => {
+      if (c._id === company._id) {
+        // Update the priority or quantity based on the input field
+        return {
+          ...c,
+          [e.target.name]: e.target.value,
+        };
+      }
+      return c;
+    });
+
+    // Check if priority is within the valid range
+    if (
+      e.target.name === "priority" &&
+      (e.target.value < 0 || e.target.value > 10)
+    ) {
+      toast.error("Priority should be between 0 and 10");
+      return;
+    }
+
+    // Update the formData with the new companies array
+    props.setFormData({
+      ...props.formData,
+      companies: updatedCompanies,
+    });
+
+    console.log("Updated companies:", updatedCompanies);
   };
 
   return (
@@ -124,37 +160,127 @@ const AddCompanyInfoForm = (props) => {
                   autoComplete="off"
                   className="register-company-dropdown-input"
                 />
-                {companySuggestions.length > 0 && (
-                  <div className="suggestions-dropdown">
-                    <ul className="list-group">
-                      {companySuggestions.map((company, index) => (
-                        <li
-                          key={index}
-                          className="list-group-item"
-                          onClick={() => handleCompanySelect(company)}
-                          style={{ cursor: "pointer" }}
-                        >
-                          {company}
-                        </li>
-                      ))}
-                    </ul>
+                {loading ? (
+                  <div
+                    className="list-group-item "
+                    style={{
+                      minHeight: "100px",
+                      overflowY: "auto",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      background: "white",
+                      borderRadius: "10px",
+                    }}
+                  >
+                    <Spinner animation="border" role="status">
+                      <span className="visually-hidden">Loading...</span>
+                    </Spinner>
                   </div>
+                ) : (
+                  <>
+                    {companySuggestions.length > 0 && (
+                      <div
+                        className="suggestions-dropdown"
+                        style={{ maxHeight: "200px", overflowY: "auto" }}
+                      >
+                        <ul className="list-group">
+                          {companySuggestions.map((company, index) => (
+                            <li
+                              key={company._id}
+                              className="list-group-item"
+                              onClick={() => handleCompanySelect(company)}
+                              style={{ cursor: "pointer" }}
+                            >
+                              {company.name + " (" + company.symbol + ")"}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </>
                 )}
               </Form.Group>
 
               <ListGroup>
-                {selectedCompanies.map((company, index) => (
+                {props.formData.companies.map((company, index) => (
                   <ListGroup.Item
                     key={index}
-                    className="selected-company-container"
+                    className="selected-company-container justify-content-between"
                     style={{
-                      borderBottom: "1px solid #ccc",
-                      borderRadius: "2px",
-                      padding: "10px 0",
+                      borderBottom: "1px solid #D1CFE2",
+                      borderRadius: "10px",
+                      padding: "10px 5px",
                       margin: "5px",
+                      background: "#D1CFE2",
                     }}
                   >
-                    <span>{company}</span>
+                    <div
+                      className="d-flex justify-content-between align-items-center flex-md-row flex-column"
+                      style={{ background: "#D1CFE2" }}
+                    >
+                      {/* Company Name and Symbol */}
+                      <div className="d-flex flex-column flex-md-row align-items-start">
+                        <span>
+                          {company.name + " ("}
+                          <span style={{ color: "#4CAF50" }}>
+                            {company.symbol}
+                          </span>
+                          {")"}
+                        </span>
+                      </div>
+
+                      {/* Two Input Boxes */}
+                      <div className="d-flex flex-column flex-md-row justify-content-end align-items-center register-company-priority-quantity">
+                        <input
+                          type="number"
+                          className="form-control"
+                          name="quantity"
+                          style={{
+                            width: "97px",
+                            marginBottom: "0",
+                            background: "#3D3D4E",
+                            color: "white",
+                          }}
+                          placeholder="Quantity"
+                          value={props.formData.companies[index].quantity}
+                          onChange={(e) =>
+                            handleCompanyPriorityAndQuantity(e, company)
+                          }
+                        />
+                        <input
+                          type="number"
+                          name="priority"
+                          className="form-control"
+                          style={{
+                            width: "95px",
+                            marginBottom: "0",
+                            background: "#3D3D4E",
+                            marginLeft: "5px",
+                            color: "white",
+                          }}
+                          placeholder="Priority"
+                          value={props.formData.companies[index].priority}
+                          onChange={(e) =>
+                            handleCompanyPriorityAndQuantity(e, company)
+                          }
+                        />
+                        <MdDelete
+                          size={40}
+                          style={{ cursor: "pointer" }}
+                          onClick={(e) => {
+                            const updatedCompanies =
+                              props.formData.companies.filter(
+                                (c) => c._id !== company._id
+                              );
+                            props.setFormData({
+                              ...props.formData,
+                              companies: updatedCompanies,
+                            });
+                          }}
+                        />
+                      </div>
+                    </div>
                   </ListGroup.Item>
                 ))}
               </ListGroup>
@@ -218,7 +344,7 @@ const SelectNewsPartnerForm = (props) => {
                   className="mx-2"
                   onClick={(e) => {
                     e.preventDefault();
-                    props.setRegisterStep(3); // Go to the previous step
+                    props.setRegisterStep(2); // Go to the previous step
                   }}
                 >
                   ← Prev

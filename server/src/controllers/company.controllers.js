@@ -13,8 +13,8 @@ export const getCompaniesSuggestion = AsyncHandler(async (req, res, next) => {
 
   const companies = await Company.find({
     $or: [
-      { name: { $regex: query, $options: "i" } },
-      { symbol: { $regex: query, $options: "i" } },
+      { name: { $regex: `^${query}`, $options: "i" } },
+      { symbol: { $regex: `^${query}`, $options: "i" } },
     ],
   }).select("name symbol");
 
