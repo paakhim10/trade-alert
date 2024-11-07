@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import morgan from "morgan";
 import logger from "./utils/logger.js";
 import AuthRouter from "./routers/auth.router.js";
+import CompanyRouter from "./routers/company.router.js";
 
 dotenv.config();
 
@@ -47,5 +48,7 @@ app.use(
 
 // Routes
 app.use("/api/v1/auth", AuthRouter);
+
+app.use("/api/v1/company", CompanyRouter);
 
 export default app;
