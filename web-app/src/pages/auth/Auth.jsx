@@ -2,11 +2,55 @@ import Header from "../../components/common/header/Header";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import "./Auth.css";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import apiCall from "../../utils/axiosInstance.js";
 import { toast } from "react-toastify";
-import * as validate from "../../utils/validation.js";
+import Storage from "../../utils/storage.js";
+import Spinner from "react-bootstrap/Spinner";
 
 const Login = (props) => {
+  const navigate = useNavigate();
+
+  const [loading, setLoading] = useState(false);
+
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    if (formData.password.length < 6) {
+      toast.error("Password should be atleast 6 characters long");
+      return;
+    }
+
+    const response = await apiCall("POST", "api/v1/auth/login", formData);
+
+    setLoading(false);
+    if (response.success) {
+      if (response.data.stage == "Stage_AddUserDetails") {
+        Storage.setData("token", response.data.token);
+        Storage.setData("stage", response.data.stage);
+        navigate("/register");
+      } else if (response.data.stage == "Stage_EmailVerification") {
+        toast.info("Please verify your email to continue");
+      } else {
+        Storage.setData("token", response.data.token);
+        Storage.setData("stage", response.data.stage);
+        navigate("/dashboard");
+      }
+    } else {
+      toast.error(response.message);
+    }
+  };
+
   return (
     <>
       <Header heading="Log In" />
@@ -15,13 +59,29 @@ const Login = (props) => {
           <div className="login-form-container">
             <Form>
               <Form.Group controlId="formBasicEmail">
-                <Form.Control type="email" placeholder="Email" />
+                <Form.Control
+                  name="email"
+                  type="email"
+                  placeholder="Email"
+                  onChange={handleChange}
+                />
               </Form.Group>
               <Form.Group controlId="formBasicPassword">
-                <Form.Control type="password" placeholder="Password" />
+                <Form.Control
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                  onChange={handleChange}
+                />
               </Form.Group>
-              <Button variant="primary" type="submit">
-                Log In
+              <Button variant="primary" type="submit" onClick={handleSubmit}>
+                {loading ? (
+                  <Spinner animation="border" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                  </Spinner>
+                ) : (
+                  "Log In"
+                )}
               </Button>
             </Form>
           </div>
@@ -44,6 +104,7 @@ const Login = (props) => {
 };
 
 const SignUp = (props) => {
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -56,7 +117,7 @@ const SignUp = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setLoading(true);
     if (formData.password !== formData.confirmPassword) {
       toast.error("Passwords do not match");
       return;
@@ -65,12 +126,9 @@ const SignUp = (props) => {
       toast.error("Password should be atleast 6 characters long");
       return;
     }
-    if (!validate.validEmail(formData.email)) {
-      toast.error("Invalid Email");
-      return;
-    }
 
     const response = await apiCall("POST", "api/v1/auth/signup", formData);
+    setLoading(false);
     console.log("response from handlesubmit", response);
     if (response.success) {
       toast.success("Please verify your email to continue");
@@ -112,7 +170,13 @@ const SignUp = (props) => {
                 />
               </Form.Group>
               <Button variant="primary" type="submit" onClick={handleSubmit}>
-                Sign Up
+                {loading ? (
+                  <Spinner animation="border" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                  </Spinner>
+                ) : (
+                  "Sign Up"
+                )}
               </Button>
             </Form>
           </div>
