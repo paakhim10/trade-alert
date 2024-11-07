@@ -117,10 +117,12 @@ export const login = AsyncHandler(async (req, res) => {
   if (unregisteredUser.stage === "Stage_EmailVerification") {
     throw new ApiError(400, "Please verify your email first");
   }
+  const token = generateToken(unregisteredUser);
   return res.status(200).json(
     new ApiResponse(200, "Add company Details", {
       email: unregisteredUser.email,
       stage: unregisteredUser.stage,
+      token: token,
     })
   );
 });
