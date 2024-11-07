@@ -2,10 +2,14 @@
   min-height: 85vh;
 }
 
+.register-form-heading-color {
+  color: var(--color-light-pink) !important;
+}
+
 .register-form-container {
   background-color: white; /* Background color of the form container */
   border-radius: 3rem; /* Rounded corners */
-  padding: 100px 50px 60px 50px; /* Padding inside the container */
+  padding: 50px 50px 60px 50px; /* Padding inside the container */
   background-color: var(--color-secondary);
   margin: 20px; /* Margin around the container */
   width: 50%;
@@ -27,7 +31,7 @@
   font-size: 1rem;
   display: block;
   margin: 0 auto;
-  background-color: var(--color-light-pink);
+  background-color: #d9d9d9;
   color: #000000;
   border-color: transparent;
   font-weight: 400;
@@ -44,6 +48,14 @@
 .register-form-container form div input::placeholder {
   color: white;
 }
+.register-company-dropdown-input {
+  background-color: var(--color-light-pink) !important;
+  margin-bottom: 0 !important;
+}
+
+.register-company-dropdown-input::placeholder {
+  color: var(--color-secondary) !important;
+}
 
 @media screen and (max-width: 768px) {
   .register-container {
@@ -54,5 +66,8 @@
   }
   .register-form-container {
     width: 100%;
+  }
+  .register-form-container .btn {
+    padding: 5px 20px;
   }
 }

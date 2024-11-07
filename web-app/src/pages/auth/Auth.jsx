@@ -28,6 +28,7 @@ const Login = (props) => {
 
     if (formData.password.length < 6) {
       toast.error("Password should be atleast 6 characters long");
+      setLoading(false);
       return;
     }
 
@@ -64,6 +65,8 @@ const Login = (props) => {
                   type="email"
                   placeholder="Email"
                   onChange={handleChange}
+                  value={formData.email}
+                  required
                 />
               </Form.Group>
               <Form.Group controlId="formBasicPassword">
@@ -72,9 +75,16 @@ const Login = (props) => {
                   type="password"
                   placeholder="Password"
                   onChange={handleChange}
+                  value={formData.password}
+                  required
                 />
               </Form.Group>
-              <Button variant="primary" type="submit" onClick={handleSubmit}>
+              <Button
+                variant="primary"
+                type="submit"
+                onClick={handleSubmit}
+                disabled={loading}
+              >
                 {loading ? (
                   <Spinner animation="border" role="status">
                     <span className="visually-hidden">Loading...</span>
@@ -120,10 +130,12 @@ const SignUp = (props) => {
     setLoading(true);
     if (formData.password !== formData.confirmPassword) {
       toast.error("Passwords do not match");
+      setLoading(false);
       return;
     }
     if (formData.password.length < 6) {
       toast.error("Password should be atleast 6 characters long");
+      setLoading(false);
       return;
     }
 
@@ -151,6 +163,8 @@ const SignUp = (props) => {
                   type="email"
                   placeholder="Email"
                   onChange={handleChange}
+                  value={formData.email}
+                  required
                 />
               </Form.Group>
               <Form.Group>
@@ -159,6 +173,8 @@ const SignUp = (props) => {
                   type="password"
                   placeholder="Password"
                   onChange={handleChange}
+                  value={formData.password}
+                  required
                 />
               </Form.Group>
               <Form.Group>
@@ -166,10 +182,17 @@ const SignUp = (props) => {
                   name="confirmPassword"
                   type="password"
                   placeholder="Confirm Password"
+                  value={formData.confirmPassword}
                   onChange={handleChange}
+                  required
                 />
               </Form.Group>
-              <Button variant="primary" type="submit" onClick={handleSubmit}>
+              <Button
+                variant="primary"
+                type="submit"
+                onClick={handleSubmit}
+                disabled={loading}
+              >
                 {loading ? (
                   <Spinner animation="border" role="status">
                     <span className="visually-hidden">Loading...</span>
