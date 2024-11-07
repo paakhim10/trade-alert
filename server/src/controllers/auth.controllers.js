@@ -6,8 +6,9 @@ import logger from "../utils/logger.js";
 import { UnregisteredUser } from "../models/unregisteredUser.model.js";
 import { User } from "../models/user.model.js";
 import { sendConfirmationMail } from "../utils/sendMail.js";
+import { generateToken } from "../utils/jwt.js";
 
-export const signup = AsyncHandler(async (req, res, next) => {
+export const signup = AsyncHandler(async (req, res) => {
   logger.debug("Signup route");
   const { email, password, confirmPassword } = req.body;
   if (!email || !password || !confirmPassword) {
@@ -43,14 +44,20 @@ export const signup = AsyncHandler(async (req, res, next) => {
   }
 
   // Send email verification
-  await sendConfirmationMail(email, newUser._id);
+  const mailSent = await sendConfirmationMail(email, newUser._id);
+
+  if (!mailSent) {
+    const response = await UnregisteredUser.deleteOne({ _id: newUser._id });
+    console.log(response);
+    throw new ApiError(500, "Error sending email please try again");
+  }
 
   return res
     .status(201)
     .json(new ApiResponse(201, "Please verify your email to continue"));
 });
 
-export const confirmEmail = AsyncHandler(async (req, res, next) => {
+export const confirmEmail = AsyncHandler(async (req, res) => {
   logger.debug("Confirm email route");
   const { id } = req.query;
 
@@ -59,6 +66,7 @@ export const confirmEmail = AsyncHandler(async (req, res, next) => {
   }
 
   const unregisteredUser = await UnregisteredUser.findById(id);
+  console.log(unregisteredUser);
   if (
     !unregisteredUser ||
     unregisteredUser.stage !== "Stage_EmailVerification"
@@ -77,4 +85,42 @@ export const confirmEmail = AsyncHandler(async (req, res, next) => {
     "confirmedEmailTemplate.html"
   );
   res.status(200).sendFile(confirmationPagePath);
+});
+
+export const login = AsyncHandler(async (req, res) => {
+  logger.debug("Login route");
+  const { email, password } = req.body;
+  if (!email || !password) {
+    throw new ApiError(400, "Please provide email and password");
+  }
+  const user = await User.findOne({ email }).select("-password");
+
+  if (user) {
+    if (!(await user.matchPassword(password))) {
+      throw new ApiError(401, "Invalid credentials");
+    }
+    const token = generateToken(user);
+    return res.status(200).json(
+      new ApiResponse(200, "User logged in succesfully", {
+        ...user,
+        token: token,
+      })
+    );
+  }
+  const unregisteredUser = await UnregisteredUser.findOne({ email }).select(
+    "-password"
+  );
+  if (!unregisteredUser) {
+    throw new ApiError(400, "Please Sign up first");
+  }
+  console.log(unregisteredUser.stage);
+  if (unregisteredUser.stage === "Stage_EmailVerification") {
+    throw new ApiError(400, "Please verify your email first");
+  }
+  return res.status(200).json(
+    new ApiResponse(200, "Add company Details", {
+      email: unregisteredUser.email,
+      stage: unregisteredUser.stage,
+    })
+  );
 });

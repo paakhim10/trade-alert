@@ -2,6 +2,7 @@
 import transporter from "../config/mailer.js";
 import fs from "fs/promises";
 import path from "path";
+import logger from "./logger.js";
 
 const SERVER_URL = process.env.SERVER_URL;
 const FROM_EMAIL = process.env.EMAIL_APP_PASSWORD;
@@ -44,8 +45,10 @@ export async function sendConfirmationMail(email, userId) {
 
     // Send the email
     await transporter.sendMail(mailOptions);
-    console.log("Confirmation email sent successfully");
+    logger.info(`Confirmation email sent to ${email}`);
+    return true;
   } catch (error) {
-    console.error("Error sending confirmation email:", error);
+    logger.error(`Error sending confirmation email to ${email}`);
+    return false;
   }
 }
