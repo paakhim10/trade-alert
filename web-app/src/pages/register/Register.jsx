@@ -31,6 +31,7 @@ const UserInfoForm = (props) => {
                   onChange={handleChange}
                   value={props.formData.fullName}
                   style={{ color: "white" }}
+                  className="register-userinfo-input"
                 />
               </Form.Group>
               <Form.Group controlId="formBasicPhoneNumber">
@@ -41,6 +42,7 @@ const UserInfoForm = (props) => {
                   onChange={handleChange}
                   value={props.formData.phoneNumber}
                   style={{ color: "white" }}
+                  className="register-userinfo-input"
                 />
               </Form.Group>
 
@@ -318,6 +320,33 @@ const AddCompanyInfoForm = (props) => {
 };
 
 const SelectNewsPartnerForm = (props) => {
+  const newPortals = [
+    "The Economic Times",
+    "The Tribune",
+    "Hindustan Times",
+    "Pulse by Zerodha",
+    "The Indian Express",
+    "Times of India",
+    "LiveMint",
+    "CNBC",
+  ];
+  const handleClick = (e, index) => {
+    const newPortal = newPortals[index];
+    if (!props.formData.newsPartners.includes(newPortal)) {
+      props.setFormData({
+        ...props.formData,
+        newsPartners: [...props.formData.newsPartners, newPortal],
+      });
+    } else {
+      const updatedNewsPartners = props.formData.newsPartners.filter(
+        (np) => np !== newPortal
+      );
+      props.setFormData({
+        ...props.formData,
+        newsPartners: updatedNewsPartners,
+      });
+    }
+  };
   return (
     <>
       <Container fluid>
@@ -327,15 +356,30 @@ const SelectNewsPartnerForm = (props) => {
               <h2 className="text-center mb-4 register-form-heading-color">
                 Select Your News Partner
               </h2>
-              <Form.Group controlId="formBasicCompanyName">
-                <Form.Control type="text" placeholder="News Partner" />
-              </Form.Group>
-              <Form.Group controlId="formBasicCompanyAddress">
-                <Form.Control type="text" placeholder="News Partner name" />
-              </Form.Group>
-              <Form.Group controlId="formBasicCompanyPhoneNumber">
-                <Form.Control type="tel" placeholder="Number Number" />
-              </Form.Group>
+              <div className="register-news-partner-subheading">
+                Select the news portals you trust with your investments:
+              </div>
+
+              <div className="register-news-partner-section">
+                {newPortals.map((newPortal, index) => {
+                  const [click, setClick] = useState(false);
+                  return (
+                    <div
+                      key={index}
+                      className="regiser-news-partner-rectangle"
+                      onClick={(e) => {
+                        handleClick(e, index);
+                        setClick((prev) => !prev);
+                      }}
+                      style={{
+                        backgroundColor: `${click ? "#FF6666" : "#3d3d4e"}`,
+                      }}
+                    >
+                      {newPortal}
+                    </div>
+                  );
+                })}
+              </div>
 
               <div className="d-flex justify-content-center">
                 <Button
