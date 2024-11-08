@@ -413,6 +413,147 @@ const SelectNewsPartnerForm = (props) => {
   );
 };
 
+const AlertPreferencesForm = (props) => {
+  const alertTypes = ["By Email", "In App"];
+  const alertFreq = ["Hourly", "Daily", "Weekly", "As Necessary"];
+
+  const handleClick = (e, index, type) => {
+    console.log(props.formData);
+    if (type === "types") {
+      const selectedType = alertTypes[index];
+      const isSelected =
+        props.formData.alertPreferences.types.includes(selectedType);
+
+      if (!isSelected) {
+        props.setFormData({
+          ...props.formData,
+          alertPreferences: {
+            ...props.formData.alertPreferences,
+            types: [...props.formData.alertPreferences.types, selectedType],
+          },
+        });
+      } else {
+        const updatedTypes = props.formData.alertPreferences.types.filter(
+          (t) => t !== selectedType
+        );
+        props.setFormData({
+          ...props.formData,
+          alertPreferences: {
+            ...props.formData.alertPreferences,
+            types: updatedTypes,
+          },
+        });
+      }
+    } else {
+      props.setFormData({
+        ...props.formData,
+        alertPreferences: {
+          ...props.formData.alertPreferences,
+          frequency: alertFreq[index],
+        },
+      });
+    }
+  };
+  return (
+    <Container fluid>
+      <Row className="justify-content-center">
+        <div className="register-form-container">
+          <Form>
+            <h2 className="text-center mb-4 register-form-heading-color">
+              Alert Preferences
+            </h2>
+
+            <div
+              className="register-alertpref-types"
+              style={{ margin: "2rem" }}
+            >
+              <h3 className="register-alterpref-types-subheading">
+                Alert Types
+              </h3>
+              <div className="register-alterpref-types-box">
+                {alertTypes.map((type, index) => {
+                  const [click, setClick] = useState(false);
+                  return (
+                    <div
+                      key={index}
+                      className="register-alertpref-type"
+                      onClick={(e) => {
+                        handleClick(e, index, "types");
+                        setClick((prev) => !prev);
+                      }}
+                      style={{
+                        background: `${click ? "#FF6666" : "#3D3D4E"}`,
+                      }}
+                    >
+                      {type}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div
+              className="register-alertpref-types"
+              style={{ margin: "2rem" }}
+            >
+              <h3 className="register-alterpref-types-subheading">
+                Alert Frequency
+              </h3>
+              <div className="register-alterpref-types-box">
+                {alertFreq.map((freq, index) => {
+                  return (
+                    <div
+                      key={index}
+                      className="register-alertpref-type"
+                      onClick={(e) => {
+                        handleClick(e, index, "freq");
+                      }}
+                      style={{
+                        background: `${
+                          props.formData.alertPreferences.frequency ===
+                          alertFreq[index]
+                            ? "#FF6666"
+                            : "#3D3D4E"
+                        }`,
+                      }}
+                    >
+                      {freq}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+            <div className="d-flex justify-content-center">
+              <Button
+                variant="secondary"
+                size="sm"
+                className="mx-2"
+                onClick={(e) => {
+                  e.preventDefault();
+                  props.setRegisterStep(3); // Go to the previous step
+                }}
+              >
+                ← Prev
+              </Button>
+              <Button
+                variant="primary"
+                size="sm"
+                className="mx-2"
+                onClick={(e) => {
+                  e.preventDefault();
+                  // props.setRegisterStep(4); // Go to the next step
+                }}
+              >
+                Submit
+              </Button>
+            </div>
+          </Form>
+        </div>
+      </Row>
+    </Container>
+  );
+};
+
 const Register = () => {
   const [registerStep, setRegisterStep] = useState(1);
   const [formData, setFormData] = useState({
@@ -422,7 +563,7 @@ const Register = () => {
     newsPartners: [],
     alertPreferences: {
       types: [],
-      frequency: [],
+      frequency: "",
     },
   });
 
@@ -447,11 +588,21 @@ const Register = () => {
               setFormData={setFormData}
             />
           ) : (
-            <SelectNewsPartnerForm
-              setRegisterStep={setRegisterStep}
-              formData={formData}
-              setFormData={setFormData}
-            />
+            <>
+              {registerStep === 3 ? (
+                <SelectNewsPartnerForm
+                  setRegisterStep={setRegisterStep}
+                  formData={formData}
+                  setFormData={setFormData}
+                />
+              ) : (
+                <AlertPreferencesForm
+                  setRegisterStep={setRegisterStep}
+                  formData={formData}
+                  setFormData={setFormData}
+                />
+              )}
+            </>
           )}
         </>
       )}
