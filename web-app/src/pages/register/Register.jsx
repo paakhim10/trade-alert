@@ -6,6 +6,9 @@ import apiCall from "../../utils/axiosInstance";
 import { toast } from "react-toastify";
 import { MdDelete } from "react-icons/md";
 import { Spinner } from "react-bootstrap";
+import { validateRegistrationForm } from "../../utils/validation";
+import Storage from "../../utils/storage";
+import { useNavigate } from "react-router-dom";
 
 const UserInfoForm = (props) => {
   const handleChange = (e) => {
@@ -414,8 +417,10 @@ const SelectNewsPartnerForm = (props) => {
 };
 
 const AlertPreferencesForm = (props) => {
+  const navigate = useNavigate();
   const alertTypes = ["By Email", "In App"];
   const alertFreq = ["Hourly", "Daily", "Weekly", "As Necessary"];
+  const [loading, setLoading] = useState(false);
 
   const handleClick = (e, index, type) => {
     console.log(props.formData);
@@ -454,6 +459,28 @@ const AlertPreferencesForm = (props) => {
       });
     }
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const errors = validateRegistrationForm(props.formData);
+    if (errors) {
+      toast.error(errors);
+      return;
+    }
+    setLoading(true);
+    const response = await apiCall(
+      "POST",
+      "api/v1/auth/register",
+      props.formData
+    );
+    setLoading(false);
+    console.log("response from handlesubmit", response);
+    if (response.success) {
+      Storage.setData("token", response.data.token);
+      navigate("/dashboard");
+    }
+  };
+
   return (
     <Container fluid>
       <Row className="justify-content-center">
@@ -539,12 +566,16 @@ const AlertPreferencesForm = (props) => {
                 variant="primary"
                 size="sm"
                 className="mx-2"
-                onClick={(e) => {
-                  e.preventDefault();
-                  // props.setRegisterStep(4); // Go to the next step
-                }}
+                disabled={loading}
+                onClick={handleSubmit}
               >
-                Submit
+                {loading ? (
+                  <Spinner animation="border" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                  </Spinner>
+                ) : (
+                  "Submit"
+                )}
               </Button>
             </div>
           </Form>
