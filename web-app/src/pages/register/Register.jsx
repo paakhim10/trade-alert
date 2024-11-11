@@ -365,7 +365,6 @@ const SelectNewsPartnerForm = (props) => {
 
               <div className="register-news-partner-section">
                 {newPortals.map((newPortal, index) => {
-                  const [click, setClick] = useState(false);
                   return (
                     <div
                       key={index}
@@ -375,7 +374,13 @@ const SelectNewsPartnerForm = (props) => {
                         setClick((prev) => !prev);
                       }}
                       style={{
-                        backgroundColor: `${click ? "#FF6666" : "#3d3d4e"}`,
+                        backgroundColor: `${
+                          props.formData.newsPartners.includes(
+                            newPortals[index]
+                          )
+                            ? "#FF6666"
+                            : "#3d3d4e"
+                        }`,
                       }}
                     >
                       {newPortal}
@@ -509,7 +514,13 @@ const AlertPreferencesForm = (props) => {
                         setClick((prev) => !prev);
                       }}
                       style={{
-                        background: `${click ? "#FF6666" : "#3D3D4E"}`,
+                        background: `${
+                          props.formData.alertPreferences.types.includes(
+                            alertTypes[index]
+                          )
+                            ? "#FF6666"
+                            : "#3D3D4E"
+                        }`,
                       }}
                     >
                       {type}
