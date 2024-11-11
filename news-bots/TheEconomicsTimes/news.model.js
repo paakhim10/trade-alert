@@ -10,7 +10,7 @@ const newsSchema = new Schema(
       type: String,
       required: true,
     },
-    article: {
+    content: {
       type: String,
       required: true,
     },
@@ -22,4 +22,7 @@ const newsSchema = new Schema(
   { timestamps: true }
 );
 
-export const News = mongoose.model("News", newsSchema);
+export const TheEconomicsTimes = mongoose.model(
+  "TheEconomicsTimes",
+  newsSchema
+);
