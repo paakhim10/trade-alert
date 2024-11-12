@@ -26,3 +26,5 @@ export const TheEconomicsTimes = mongoose.model(
   "TheEconomicsTimes",
   newsSchema
 );
+export const TheHindu = mongoose.model("TheHindu", newsSchema);
+export const LiveMint = mongoose.model("LiveMint", newsSchema);
