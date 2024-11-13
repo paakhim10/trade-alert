@@ -21,16 +21,22 @@ class CNBCScraper {
   }
 
   async getFullArticle(href) {
+    console.log("Getting article from", href);
     await this.page.goto(href, { waitUntil: "networkidle2" });
 
     const newsArticle = await this.page.evaluate(() => {
       const article = {};
-      //   article.title = document.querySelector("h1.ArticleHeader_headline")?.innerText;
-      //   article.content = document.querySelector("div.ArticleBody_body")?.innerText;
+      article.title = document.querySelector(
+        "h1.ArticleHeader-headline"
+      )?.innerText;
+      article.content = document.querySelector(
+        "div.RenderKeyPoints-list"
+      )?.innerText;
       return article;
     });
 
     newsArticle.link = href;
+    console.log("Got article", newsArticle);
     return newsArticle;
   }
 
@@ -79,12 +85,57 @@ class CNBCScraper {
         );
         return links.map((link) => link.href);
       });
-      if (hrefs.length() === 0) {
+      if (hrefs.length === 0) {
         console.log("No links found on the page");
         await this.closePage();
         return;
       }
-      console.log("Number of links found:", hrefs.length());
+      console.log("Number of links found:", hrefs.length);
+
+      let newsStorage = await this.loadStoredNews();
+      const newHrefs = hrefs.slice(0, 10).filter((href) => {
+        return !newsStorage.some((news) => news.href === href);
+      });
+      console.log(
+        "No. of new links found during this scraping",
+        newHrefs.length
+      );
+
+      newHrefs.forEach((href) => {
+        newsStorage.unshift({ href });
+      });
+
+      newsStorage = newsStorage.slice(0, 10);
+
+      console.log("Getting full article and saving to DB...");
+
+      for (const href of newHrefs) {
+        console.log("Scraping article:", href);
+        const article = await this.getFullArticle(href);
+        if (
+          article.title === undefined ||
+          article.content === undefined ||
+          article.title === null ||
+          article.content === null
+        ) {
+          console.log("Skipping article:", href);
+          continue;
+        }
+        console.log("Saving article in Database:", article.title);
+        try {
+          await LiveMint.create({
+            title: article.title,
+            link: article.link,
+            content: article.content,
+          });
+        } catch (err) {
+          console.log("Error in saving article", href);
+        }
+      }
+
+      await this.saveNewsStorage(newsStorage);
+      await this.closePage();
+      console.log("CNBC news scraped successfully");
     } catch (error) {
       console.log("Error scraping CNBC news:", error);
     }
