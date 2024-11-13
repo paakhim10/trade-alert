@@ -11,6 +11,7 @@ class EconomicTimesScraper {
 
   async init() {
     this.page = await this.browser.newPage();
+    console.log("Page created successfully.");
   }
 
   async closePage() {
@@ -35,7 +36,7 @@ class EconomicTimesScraper {
 
   async loadStoredNews() {
     try {
-      console.log("path: ", this.newsStoragePath);
+      console.log("Loading stored news data...");
       const data = await fs.readFile(this.newsStoragePath, "utf-8");
       return JSON.parse(data).economictimes;
     } catch (error) {
@@ -45,6 +46,7 @@ class EconomicTimesScraper {
   }
 
   async saveNewsStorage(newNewsArray) {
+    console.log("Saving news data in store...");
     const data = await fs.readFile(this.newsStoragePath, "utf-8");
     const jsonData = JSON.parse(data);
 
@@ -62,6 +64,7 @@ class EconomicTimesScraper {
 
   async scrapeNews() {
     try {
+      console.log("Scraping Economic Times news...");
       await this.init();
       await this.page.goto(
         "https://economictimes.indiatimes.com/markets/stocks/news",
@@ -69,17 +72,27 @@ class EconomicTimesScraper {
           waitUntil: "networkidle2",
         }
       );
-
+      console.log("Economics Times Page loaded successfully.");
       const hrefs = await this.page.evaluate(() => {
         const storyElements = document.querySelectorAll("div.eachStory h3 a");
         return Array.from(storyElements).map((link) => link.href);
       });
 
+      if (hrefs.length === 0) {
+        console.log("No links found on the page");
+        return;
+      }
+      console.log("Number of links found:", hrefs.length);
+
       let newsStorage = await this.loadStoredNews();
       const newHrefs = hrefs.slice(0, 10).filter((href) => {
         return !newsStorage.some((news) => news.href === href);
       });
-      console.log(newHrefs);
+
+      console.log(
+        "No. of new links found during this scraping",
+        newHrefs.length
+      );
 
       newHrefs.forEach((href) => {
         newsStorage.unshift({ href });
@@ -88,17 +101,32 @@ class EconomicTimesScraper {
       newsStorage = newsStorage.slice(0, 10);
 
       for (const href of newHrefs) {
+        console.log("Scraping article:", href);
         const article = await this.getFullArticle(href);
-        const newsArticle = await TheEconomicsTimes.create({
-          title: article.title,
-          link: article.link,
-          content: article.content,
-        });
-        console.log("News Article:", newsArticle);
+        if (
+          article.title === null ||
+          article.title === undefined ||
+          article.content === null ||
+          article.content === undefined
+        ) {
+          console.log("Skipping article:", href);
+          continue;
+        }
+        console.log("Saving article in Database:", article.title);
+        try {
+          await TheEconomicsTimes.create({
+            title: article.title,
+            link: article.link,
+            content: article.content,
+          });
+        } catch (err) {
+          console.log("Error in saving article", href);
+        }
       }
 
       await this.saveNewsStorage(newsStorage);
       await this.closePage();
+      console.log("Economic Times news scraped successfully.");
     } catch (error) {
       console.error("Error scraping data:", error);
     }

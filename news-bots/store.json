@@ -1,4 +1,66 @@
 {
-  "economictimes": [],
-  "livemint": []
+  "economictimes": [
+    {
+      "href": "https://economictimes.indiatimes.com/markets/stocks/news/auto-stocks-more-fall-on-the-cards-should-it-matter-6-auto-stocks-with-an-upside-potential-of-up-to-37/articleshow/115244818.cms"
+    },
+    {
+      "href": "https://economictimes.indiatimes.com/markets/stocks/news/nikkei-falls-after-last-weeks-rally-seven-i-surges-on-buyout-proposal/articleshow/115247832.cms"
+    },
+    {
+      "href": "https://economictimes.indiatimes.com/markets/stocks/news/a-view-of-indias-market-milestones-and-emerging-trends-motilal-oswal/slideshow/115245941.cms"
+    },
+    {
+      "href": "https://economictimes.indiatimes.com/markets/stocks/news/swiggy-shares-surge-9-after-listing-market-cap-crosses-rs-1-lakh-crore/articleshow/115246228.cms"
+    },
+    {
+      "href": "https://economictimes.indiatimes.com/markets/stocks/news/prosus-gains-2-billion-on-swiggy-investment-with-ipo-valuation/articleshow/115241565.cms"
+    },
+    {
+      "href": "https://economictimes.indiatimes.com/markets/stocks/news/sula-vineyards-shares-crack-7-as-q2-pat-declines-by-37-yoy-revenue-dip-marginally/articleshow/115241441.cms"
+    },
+    {
+      "href": "https://economictimes.indiatimes.com/markets/stocks/news/long-term-impact-of-the-us-presidential-election-on-the-global-bitcoin-market/articleshow/115241772.cms"
+    },
+    {
+      "href": "https://economictimes.indiatimes.com/markets/stocks/news/hdfc-bank-trading-near-record-highs-time-to-buy-ajit-mishra-decodes/videoshow/115241961.cms"
+    },
+    {
+      "href": "https://economictimes.indiatimes.com/markets/stocks/news/macquarie-raises-zomato-target-prices-but-remains-bearish/articleshow/115242722.cms"
+    },
+    {
+      "href": "https://economictimes.indiatimes.com/markets/stocks/news/bitcoin-sees-profit-booking-after-over-30-rally-since-trumps-us-election-win/articleshow/115242796.cms"
+    }
+  ],
+  "livemint": [
+    {
+      "href": "https://www.livemint.com/market/stock-market-news/sula-vineyards-stock-tumbles-over-8-to-18-month-low-on-weak-q2-earnings-nears-ipo-price-11731475876828.html"
+    },
+    {
+      "href": "https://www.livemint.com/market/stock-market-news/eih-reports-record-q2-results-expansion-plans-revenue-up-14-percent-yoy-rs-558-crore-luxury-hotel-earnings-markets-news-11731476363497.html"
+    },
+    {
+      "href": "https://www.livemint.com/market/stock-market-news/equitas-small-finance-bank-risk-management-future-potential-microfinance-nbfcs-portfolios-provisioning-11731465832057.html"
+    },
+    {
+      "href": "https://www.livemint.com/market/stock-market-news/penny-stock-turns-multibagger-in-five-years-lorenzini-apparels-soars-over-6500-11731476507879.html"
+    },
+    {
+      "href": "https://www.livemint.com/market/stock-market-news/port-stocks-adani-ports-seamec-jsw-infrastructure-ports-sector-nifty-stock-options-11731476995763.html"
+    },
+    {
+      "href": "https://www.livemint.com/market/stock-market-news/sensex-nifty50-decline-for-5th-straight-session-now-down-over-9-from-peak-11731481362457.html"
+    },
+    {
+      "href": "https://www.livemint.com/market/stock-market-news/multibagger-stock-aditya-vision-share-price-jumps-over-9-after-q2-results-11731481917775.html"
+    },
+    {
+      "href": "https://www.livemint.com/market/stock-market-news/multibagger-stock-pokarna-share-price-close-to-record-high-experts-see-up-to-15-cagr-share-price-rise-in-long-term-11731478862901.html"
+    },
+    {
+      "href": "https://www.livemint.com/market/stock-market-news/stock-market-today-swiggy-share-price-jumps-after-positive-debut-on-bse-nse-buy-sell-or-hold-11731482514907.html"
+    },
+    {
+      "href": "https://www.livemint.com/market/stock-market-news/from-staff-to-millionaires-swiggy-ipo-to-make-500-employees-crorepatis-11731478370460.html"
+    }
+  ]
 }
