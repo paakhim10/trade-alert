@@ -77,6 +77,7 @@ class liveMintScrapper {
 
       if (hrefs.length === 0) {
         console.log("No links found on the page");
+        await this.closePage();
         return;
       }
       console.log("Number of links found:", hrefs.length);

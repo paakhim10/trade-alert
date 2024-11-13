@@ -80,6 +80,7 @@ class EconomicTimesScraper {
 
       if (hrefs.length === 0) {
         console.log("No links found on the page");
+        await this.closePage();
         return;
       }
       console.log("Number of links found:", hrefs.length);
@@ -128,7 +129,7 @@ class EconomicTimesScraper {
       await this.closePage();
       console.log("Economic Times news scraped successfully.");
     } catch (error) {
-      console.error("Error scraping data:", error);
+      console.log("Error scraping The Economics Times:", error);
     }
   }
 }

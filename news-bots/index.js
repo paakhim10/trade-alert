@@ -2,6 +2,7 @@ import connectDB from "./config/db.js";
 import launchBrowser from "./config/browser.js";
 import EconomicTimesScraper from "./scripts/theeconomicstimes.js";
 import liveMintScrapper from "./scripts/livemint.js";
+import CNBCScraper from "./scripts/cnbc.js";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -10,10 +11,12 @@ await connectDB();
 const scrapeNews = async () => {
   const browser = await launchBrowser();
   console.log("Scraping news...");
-  const economicTimesScraper = new EconomicTimesScraper(browser);
-  await economicTimesScraper.scrapeNews();
-  const liveMintScraper = new liveMintScrapper(browser);
-  await liveMintScraper.scrapeNews();
+  // const economicTimesScraper = new EconomicTimesScraper(browser);
+  // await economicTimesScraper.scrapeNews();
+  // const liveMintScraper = new liveMintScrapper(browser);
+  // await liveMintScraper.scrapeNews();
+  const cnbcScraper = new CNBCScraper(browser);
+  await cnbcScraper.scrapeNews();
   browser.close();
 };
 
