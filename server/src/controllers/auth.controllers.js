@@ -168,6 +168,9 @@ export const register = AsyncHandler(async (req, res) => {
       throw new ApiError(500, "Error creating user");
     }
 
+    // Delete the unregistered user
+    await UnregisteredUser.deleteOne({ email: req.user.email });
+
     return res
       .status(201)
       .json(new ApiResponse(201, "Registration Successful", user));
