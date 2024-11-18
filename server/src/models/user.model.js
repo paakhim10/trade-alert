@@ -43,11 +43,13 @@ const userSchema = new Schema({
       ],
       alert_preference: {
         type: new Schema({
-          alertTypes: {
-            type: String,
-            required: true,
-            enum: ["Email", "SMS", "Push"],
-          },
+          alertTypes: [
+            {
+              type: String,
+              required: true,
+              enum: ["Email", "SMS", "Push"],
+            },
+          ],
           alertFrequency: {
             type: String,
             required: true,
