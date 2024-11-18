@@ -29,9 +29,12 @@ class CNBCScraper {
       article.title = document.querySelector(
         "h1.ArticleHeader-headline"
       )?.innerText;
-      article.content = document.querySelector(
-        "div.RenderKeyPoints-list"
-      )?.innerText;
+      const articleBlocks = document.querySelectorAll("div.group");
+      for (const block of articleBlocks) {
+        // traverse every children and get the innertext of it
+
+        const childrenBlock = document.childNodes();
+      }
       return article;
     });
 
