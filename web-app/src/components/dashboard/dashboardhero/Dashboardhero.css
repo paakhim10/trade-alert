@@ -1,0 +1,70 @@
+.dashboard-hero-section {
+  padding: 50px;
+}
+
+.dashboard-hero-left-section {
+  width: 60%;
+}
+
+.dashboard-hero-right-section {
+  width: 40%;
+}
+
+.dashboard-hero-upper-section h2 {
+  color: var(--color-secondary);
+  font-size: 3rem;
+}
+
+.dashboard-hero-lower-section ul li {
+  list-style-type: none;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.dashboard-hero-left-lower-section-button {
+  background-color: var(--color-secondary) !important;
+  color: var(--color-light);
+
+  margin-left: 0.6rem;
+  font-size: 1.5rem;
+  width: 200px;
+}
+
+@media screen and (max-width: 768px) {
+  .dashboard-hero-section {
+    margin: 0;
+    padding: 0.8rem;
+    align-items: center;
+  }
+  .dashboard-hero-left-section {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .dashboard-hero-right-section {
+    width: 100%;
+  }
+
+  .dashboard-hero-upper-section h2 {
+    font-size: 2rem;
+  }
+
+  .dashboard-hero-upper-section h2 {
+    margin-top: 2rem;
+    color: var(--color-secondary);
+    font-size: 2rem;
+  }
+
+  .dashboard-hero-lower-section ul li {
+    list-style-type: none;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+  }
+
+  .dashboard-hero-left-lower-section-button {
+    width: 95%;
+  }
+}

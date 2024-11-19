@@ -1,0 +1,121 @@
+.dashboard-stockoverview-section {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  margin: 0;
+}
+
+.dashboard-stockoverview-heading {
+  border: 1px solid black;
+  padding: 0.5rem 1.5rem 0; /* Removed last value since it's 0 */
+  border-radius: 1rem;
+  background-color: var(--color-light-pink);
+  margin-left: 5rem;
+  width: 250px;
+}
+
+.dashboard-stockoverview-heading h2 {
+  font-size: 2.5rem;
+  width: 100%;
+}
+
+.dashboard-stockoverview-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.dashboard-stockoverview-left-section {
+  width: 45%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  min-height: 400px;
+}
+
+.dashboard-stockoverview-left-section .dashboard-stockoverview-upper-half {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-secondary);
+  padding: 1rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  border-radius: 1rem;
+}
+
+.dashboard-stockoverview-left-section .dashboard-stockoverview-lower-half {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-light-pink);
+  background-color: aqua;
+  padding: 20px;
+  margin: 20px;
+}
+
+.dashboard-stockoverview-upper-half h3 {
+  width: 35%;
+  color: #ffc0c0;
+}
+.dashboard-stockoverview-upper-half em {
+  width: 65%;
+  text-align: center;
+  color: #e5e5e5;
+  font-size: 3rem;
+}
+
+.dashboard-stockoverview-right-section {
+  background-color: var(--color-secondary);
+  width: 45%;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+}
+
+.pie-chart {
+  min-width: 500px;
+  min-height: 500px;
+}
+
+@media screen and (max-width: 768px) {
+  .dashboard-stockoverview-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .dashboard-stockoverview-heading {
+    margin-left: 0;
+    font-size: 2rem;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .dashboard-stockoverview-content {
+    margin-left: 0;
+    margin-top: 0;
+    flex-direction: column;
+  }
+
+  .dashboard-stockoverview-left-section {
+    width: 100%;
+    margin: 1rem;
+    border-radius: 1rem;
+  }
+  .dashboard-stockoverview-right-section {
+    width: 100%;
+    border-radius: 1rem;
+    padding: 0;
+  }
+
+  .pie-chart {
+    min-width: 350px;
+    min-height: 350px;
+  }
+}
