@@ -11,6 +11,8 @@ import Settings from "./pages/settings/Settings";
 import Register from "./pages/register/Register";
 import Dashboard from "./pages/dashboard/Dashboard";
 import ScrollToTop from "./components/scrollToTop/ScrollToTop";
+import PrivateUserRoute from "./routes/PrivateUserRoutes";
+import PrivateRegisterRoute from "./routes/PrivateRegisterRoute";
 
 const App = () => {
   return (
@@ -19,12 +21,16 @@ const App = () => {
       <ScrollToTop />
       <Navbar />
       <Routes>
+        <Route element={<PrivateUserRoute />}>
+          <Route path="/landing" element={<Landing />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/settings" element={<Settings />} />
+        </Route>
         <Route path="/" element={<Home />} />
-        <Route path="/landing" element={<Landing />} />
         <Route path="/auth" element={<Auth />} />
-        <Route path="/settings" element={<Settings />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route element={<PrivateRegisterRoute />}>
+          <Route path="/register" element={<Register />} />
+        </Route>
       </Routes>
       <Footer />
     </>
