@@ -93,12 +93,13 @@ export const login = AsyncHandler(async (req, res) => {
   if (!email || !password) {
     throw new ApiError(400, "Please provide email and password");
   }
-  const user = await User.findOne({ email }).select("-password");
+  const user = await User.findOne({ email });
 
   if (user) {
     if (!(await user.matchPassword(password))) {
       throw new ApiError(401, "Invalid credentials");
     }
+    logger.debug("Password Match");
     const token = generateToken(user, "registeredUser");
     return res.status(200).json(
       new ApiResponse(200, "User logged in succesfully", {
@@ -172,14 +173,12 @@ export const register = AsyncHandler(async (req, res) => {
     await UnregisteredUser.deleteOne({ email: req.user.email });
     const token = generateToken(user, "registeredUser");
 
-    return res
-      .status(201)
-      .json(
-        new ApiResponse(201, "Registration Successful", {
-          ...user,
-          token: token,
-        })
-      );
+    return res.status(201).json(
+      new ApiResponse(201, "Registration Successful", {
+        ...user,
+        token: token,
+      })
+    );
   } catch (error) {
     logger.error("Error in registration:", error);
     throw new ApiError(500, "Error during registration");

@@ -487,7 +487,7 @@ const AlertPreferencesForm = (props) => {
     if (response.success) {
       Storage.removeData("stage");
       Storage.setData("token", response.data.token);
-      navigate("/landing");
+      navigate("/dashboard");
     }
   };
 

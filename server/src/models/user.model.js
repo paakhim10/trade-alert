@@ -1,4 +1,5 @@
 import mongoose, { Schema } from "mongoose";
+import bcrypt from "bcryptjs";
 
 const userSchema = new Schema({
   email: {
@@ -71,6 +72,9 @@ userSchema.pre("save", async function (next) {
 });
 
 userSchema.methods.matchPassword = async function (enteredPassword) {
+  console.log("Inside matchPassword function");
+  console.log("EnteredPassword: ", enteredPassword);
+  console.log("current password: ", this.password);
   return await bcrypt.compare(enteredPassword, this.password);
 };
 

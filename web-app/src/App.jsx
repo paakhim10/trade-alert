@@ -22,7 +22,6 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route element={<PrivateUserRoute />}>
-          <Route path="/landing" element={<Landing />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/settings" element={<Settings />} />
         </Route>
