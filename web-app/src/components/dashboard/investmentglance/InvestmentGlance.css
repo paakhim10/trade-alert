@@ -1,0 +1,55 @@
+.investment-glance-section {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: var(--color-secondary);
+  padding: 3rem;
+  border-radius: 2rem;
+}
+
+.investment-glance-section h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  color: #ffc0c0;
+}
+
+.investmentglance-table-bootstrap {
+  background-color: #9393b6; /* White background for the table */
+  border-radius: 10px; /* Rounded corners for the table */
+  overflow: hidden; /* Ensure content doesn't overflow rounded corners */
+}
+
+.investmentglance-table-bootstrap th {
+  background-color: #9393b6; /* Blue background for the table headers */
+  color: #e5e5e5;
+}
+
+.investmentglance-table-bootstrap td {
+  background-color: #9393b6; /* Light gray background for table rows */
+  color: #070303;
+}
+
+.investmentglance-table-bootstrap th,
+.investmentglance-table-bootstrap td {
+  border-top: none; /* Remove top borders between rows */
+  border-bottom: none; /* Remove bottom borders between rows */
+}
+
+.investmentglance-table-bootstrap td + td,
+.investmentglance-table-bootstrap th + th {
+  border-left: 1px solid #dee2e6; /* Add borders between columns */
+}
+
+@media screen and (max-width: 768px) {
+  .investment-glance-section {
+    padding: 1rem;
+    width: 90%;
+  }
+
+  .investment-glance-section h2 {
+    font-size: 1.5rem;
+  }
+}
