@@ -126,3 +126,56 @@ export const login = AsyncHandler(async (req, res) => {
     })
   );
 });
+
+export const register = AsyncHandler(async (req, res) => {
+  logger.debug("Register Route");
+
+  const { alertPreferences, companies, fullName, newsPartners, phoneNumber } =
+    req.body;
+
+  // Prepare user data
+  const userData = {
+    email: req.user.email,
+    password: req.user.password,
+    name: fullName,
+    phone: phoneNumber,
+    companyStocks: companies.map((company) => ({
+      name: company.name,
+      quantity: parseInt(company.quantity, 10), // Ensure quantity is a number
+      priority: parseInt(company.priority, 10), // Ensure priority is a number
+    })),
+    userPreferences: {
+      news_partners: newsPartners || [], // Default to an empty array if undefined
+      alert_preference: {
+        alertTypes: alertPreferences.types?.map((type) => {
+          if (type === "By Email") return "Email";
+          if (type === "By SMS") return "SMS";
+          if (type === "In App") return "Push";
+        }), // Default to "Email"
+        alertFrequency:
+          alertPreferences.frequency == "As Necessary"
+            ? "asNecessary"
+            : alertPreferences.frequency, // Default to "Daily"
+      },
+    },
+  };
+  console.log("User Data: ", JSON.stringify(userData));
+  try {
+    // Create the user
+    const user = await User.create(userData);
+
+    if (!user) {
+      throw new ApiError(500, "Error creating user");
+    }
+
+    // Delete the unregistered user
+    await UnregisteredUser.deleteOne({ email: req.user.email });
+
+    return res
+      .status(201)
+      .json(new ApiResponse(201, "Registration Successful", user));
+  } catch (error) {
+    logger.error("Error in registration:", error);
+    throw new ApiError(500, "Error during registration");
+  }
+});
