@@ -38,7 +38,7 @@ const StockOverview = () => {
           <h2>Dashboard</h2>
         </Container>
         <Container fluid className="dashboard-stockoverview-content">
-          <Container className="dashboard-stockoverview-left-section">
+          <Container fluid className="dashboard-stockoverview-left-section">
             <div className="dashboard-stockoverview-upper-half">
               <h3>Calculated Investment Value</h3>
               <em>₹ 500</em>
@@ -47,7 +47,7 @@ const StockOverview = () => {
               Your Companies
             </div>
           </Container>
-          <Container className="dashboard-stockoverview-right-section">
+          <Container fluid className="dashboard-stockoverview-right-section">
             <Plot data={data} layout={layout} className="pie-chart" />
           </Container>
         </Container>

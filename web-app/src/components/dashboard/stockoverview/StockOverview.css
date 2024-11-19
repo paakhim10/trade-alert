@@ -27,7 +27,7 @@
 }
 
 .dashboard-stockoverview-left-section {
-  width: 45%;
+  width: 48%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -44,16 +44,22 @@
   padding-top: 3rem;
   padding-bottom: 3rem;
   border-radius: 1rem;
+  width: 100%;
+  max-width: 600px;
 }
 
 .dashboard-stockoverview-left-section .dashboard-stockoverview-lower-half {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-light-pink);
-  background-color: aqua;
+  background-color: var(--color-secondary);
   padding: 20px;
   margin: 20px;
+  height: 300px;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 2rem;
+  color: var(--color-light-pink);
 }
 
 .dashboard-stockoverview-upper-half h3 {
@@ -69,7 +75,7 @@
 
 .dashboard-stockoverview-right-section {
   background-color: var(--color-secondary);
-  width: 45%;
+  width: 48%;
   padding: 2rem;
   display: flex;
   justify-content: center;
@@ -107,6 +113,7 @@
     width: 100%;
     margin: 1rem;
     border-radius: 1rem;
+    padding: 0;
   }
   .dashboard-stockoverview-right-section {
     width: 100%;
@@ -117,5 +124,9 @@
   .pie-chart {
     min-width: 350px;
     min-height: 350px;
+  }
+
+  .dashboard-stockoverview-left-section .dashboard-stockoverview-lower-half {
+    width: 100%;
   }
 }
