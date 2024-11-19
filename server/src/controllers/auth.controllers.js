@@ -170,10 +170,16 @@ export const register = AsyncHandler(async (req, res) => {
 
     // Delete the unregistered user
     await UnregisteredUser.deleteOne({ email: req.user.email });
+    const token = generateToken(user, "registeredUser");
 
     return res
       .status(201)
-      .json(new ApiResponse(201, "Registration Successful", user));
+      .json(
+        new ApiResponse(201, "Registration Successful", {
+          ...user,
+          token: token,
+        })
+      );
   } catch (error) {
     logger.error("Error in registration:", error);
     throw new ApiError(500, "Error during registration");

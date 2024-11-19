@@ -371,7 +371,6 @@ const SelectNewsPartnerForm = (props) => {
                       className="regiser-news-partner-rectangle"
                       onClick={(e) => {
                         handleClick(e, index);
-                        setClick((prev) => !prev);
                       }}
                       style={{
                         backgroundColor: `${
@@ -473,16 +472,22 @@ const AlertPreferencesForm = (props) => {
       return;
     }
     setLoading(true);
+    const token = Storage.getData("token");
+    const headers = {
+      Authorization: `Bearer ${token}`,
+    };
     const response = await apiCall(
       "POST",
       "api/v1/auth/register",
-      props.formData
+      props.formData,
+      headers
     );
     setLoading(false);
     console.log("response from handlesubmit", response);
     if (response.success) {
+      Storage.removeData("stage");
       Storage.setData("token", response.data.token);
-      navigate("/dashboard");
+      navigate("/landing");
     }
   };
 

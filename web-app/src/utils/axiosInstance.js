@@ -1,4 +1,5 @@
 import axios from "axios";
+import Storage from "./storage";
 
 // Create an Axios instance with default settings
 const api = axios.create({
@@ -11,6 +12,11 @@ const api = axios.create({
 
 const apiCall = async (method = "GET", endpoint, data = null, config = {}) => {
   try {
+    method = method.toUpperCase();
+    config.headers = {
+      Authorization: `Bearer ${Storage.getData("token")}`,
+      ...config.headers,
+    };
     const response = await api({
       url: endpoint,
       method,

@@ -6,14 +6,10 @@ const PrivateUserRoute = () => {
   const stage = Storage.getData("stage");
 
   if (!token) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/auth" />;
   }
 
-  if (
-    stage === "Stage_AddUserDetails" ||
-    stage === null ||
-    stage === undefined
-  ) {
+  if (stage === "Stage_AddUserDetails") {
     return <Navigate to="/register" />;
   }
 

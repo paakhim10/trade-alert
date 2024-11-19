@@ -7,11 +7,11 @@ const PrivateRegisterRoute = () => {
 
   if (
     !token ||
-    stage === "Stage_AddUserDetails" ||
+    stage !== "Stage_AddUserDetails" ||
     stage === null ||
     stage === undefined
   ) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/auth" />;
   }
 
   return <Outlet />;

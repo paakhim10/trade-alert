@@ -36,16 +36,14 @@ const Login = (props) => {
 
     setLoading(false);
     if (response.success) {
-      if (response.data.stage == "Stage_AddUserDetails") {
-        Storage.setData("token", response.data.token);
-        Storage.setData("stage", response.data.stage);
-        navigate("/register");
-      } else if (response.data.stage == "Stage_EmailVerification") {
+      if (response.data.stage == "Stage_EmailVerification") {
         toast.info("Please verify your email to continue");
       } else {
         Storage.setData("token", response.data.token);
         Storage.setData("stage", response.data.stage);
-        navigate("/dashboard");
+        if (response.data.stage === "Stage_AddUserDetails")
+          navigate("/register");
+        else navigate("/dashboard");
       }
     } else {
       toast.error(response.message);
