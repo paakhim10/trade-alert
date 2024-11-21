@@ -6,6 +6,7 @@ import morgan from "morgan";
 import logger from "./utils/logger.js";
 import AuthRouter from "./routers/auth.router.js";
 import CompanyRouter from "./routers/company.router.js";
+import UserRouter from "./routers/user.router.js";
 
 dotenv.config();
 
@@ -29,6 +30,7 @@ app.use(
   })
 );
 app.use(express.json({ limit: "16kb" }));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(
   morgan(morganFormat, {
@@ -50,5 +52,7 @@ app.use(
 app.use("/api/v1/auth", AuthRouter);
 
 app.use("/api/v1/company", CompanyRouter);
+
+app.use("/api/v1/user", UserRouter);
 
 export default app;

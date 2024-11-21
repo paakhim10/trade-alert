@@ -60,6 +60,9 @@ const userSchema = new Schema({
       },
     }),
   },
+  notificationToken: {
+    type: String,
+  },
 });
 
 userSchema.pre("save", async function (next) {

@@ -10,11 +10,13 @@ export const verifyRegisteredToken = AsyncHandler(async (req, res, next) => {
   const token =
     req.cookies?.token || req.header("Authorization")?.replace("Bearer ", "");
 
+  console.log("Token", token);
+
   if (!token) {
     logger.info("Token not found");
     throw new ApiError(401, "Please Login to continue");
   }
-
+  const tokenData = verifyAndDecodeToken(token);
   console.log("token Data", tokenData);
   if (!tokenData.valid) {
     logger.info(`Invalid token: ${tokenData.error}`);
@@ -25,7 +27,7 @@ export const verifyRegisteredToken = AsyncHandler(async (req, res, next) => {
     logger.info("User not found");
     throw new ApiError(401, "User no longer exists, please login");
   }
-
+  console.log("User", user);
   req.user = user;
   req.user.type = tokenData.data.type;
   next();
