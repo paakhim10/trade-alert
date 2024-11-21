@@ -1,0 +1,94 @@
+.custom-carousel-container {
+  margin: 20px auto;
+  max-width: 1200px;
+}
+
+.custom-carousel-card {
+  flex: 1;
+}
+
+.personal-recommendation-heading {
+  padding: 0.5rem 1.5rem;
+  border-radius: 1rem;
+  color: var(--color-secondary);
+  margin: 2rem 5rem 0rem 5rem; /* Shorthand margin */
+}
+
+.personal-recommendation-heading h2 {
+  font-size: 2.5rem;
+  width: 100%;
+}
+
+.news-card {
+  background-color: #2c2a3f;
+  border-radius: 12px;
+  padding: 20px;
+  color: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  width: 40%;
+  margin: 2rem;
+}
+
+.news-card-title {
+  font-size: 1.5rem;
+  color: #f28482;
+  margin-bottom: 10px;
+}
+
+.news-card-tags {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.news-card-badge-green {
+  background-color: #eafaf1;
+  color: #3ab762;
+  font-weight: bold;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+}
+
+.news-card-description {
+  background-color: #e4e4e4;
+  color: #333;
+  border-radius: 8px;
+  padding: 15px;
+  min-height: 100px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .custom-carousel-card {
+    max-width: 100%;
+  }
+  .personal-recommendation-heading {
+    margin: 1rem 0.5rem;
+  }
+  .personal-recommendation-heading h2 {
+    font-size: 2rem;
+  }
+  .news-card {
+    width: 100%; /* Adjusted for full width */
+    margin: 0.5rem;
+    padding: 10px;
+    min-height: 400px;
+  }
+  .news-card-title {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+  }
+  .news-card-tags {
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .news-card-badge-green {
+    padding: 4px 6px;
+    font-size: 0.8rem;
+  }
+  .news-card-description {
+    padding: 10px;
+    min-height: 50px; /* Adjusted to ensure reasonable height */
+    font-size: 1rem;
+  }
+}
