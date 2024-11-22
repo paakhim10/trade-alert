@@ -62,17 +62,14 @@ class TheIndianExpressScraper {
     try {
       console.log("Scraping Indian Express news...");
       await this.init();
-      await this.page.goto(
-        // "https://www.livemint.com/market/stock-market-news",
-        {
-          waitUntil: "networkidle2",
-        }
-      );
+      await this.page.goto("https://financialexpress.com/market/", {
+        waitUntil: "networkidle2",
+      });
       console.log("Page loaded successfully.");
 
       const hrefs = await this.page.evaluate(() => {
-        // const storyElements = document.querySelectorAll("h2.headline a");
-        return Array.from(storyElements).map((link) => link.href);
+        const links = Array.from(document.querySelectorAll("article div h3 a"));
+        return links.map((link) => link.href);
       });
 
       if (hrefs.length === 0) {

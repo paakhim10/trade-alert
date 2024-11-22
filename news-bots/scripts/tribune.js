@@ -62,17 +62,18 @@ class TribuneScrapper {
     try {
       console.log("Scraping Tribune news...");
       await this.init();
-      await this.page.goto(
-        // "https://www.livemint.com/market/stock-market-news",
-        {
-          waitUntil: "networkidle2",
-        }
-      );
+      await this.page.goto("https://www.tribuneindia.com/topic/stock", {
+        waitUntil: "networkidle2",
+      });
       console.log("Page loaded successfully.");
 
       const hrefs = await this.page.evaluate(() => {
-        // const storyElements = document.querySelectorAll("h2.headline a");
-        return Array.from(storyElements).map((link) => link.href);
+        const links = Array.from(
+          document.querySelectorAll(
+            "div.related-post-widget-inner div.post-item div.post-item-cntnt div.post-header a"
+          )
+        );
+        return links.map((link) => link.href);
       });
 
       if (hrefs.length === 0) {
