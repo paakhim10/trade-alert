@@ -22,12 +22,31 @@ class liveMintScrapper {
   async getFullArticle(href) {
     await this.page.goto(href, { waitUntil: "networkidle2" });
     console.log("Getting article from", href);
+    // const newsArticle = await this.page.evaluate(() => {
+    //   const article = {};
+    //   article.title = document.querySelector("h1#article-0")?.innerText;
+    //   article.content = document.querySelector(
+    //     "div.storyPage_storyContent__m_MYl"
+    //   )?.innerText;
+    //   return article;
+    // });
     const newsArticle = await this.page.evaluate(() => {
       const article = {};
       article.title = document.querySelector("h1#article-0")?.innerText;
-      article.content = document.querySelector(
+      const articleBlocks = document.querySelectorAll(
         "div.storyPage_storyContent__m_MYl"
-      )?.innerText;
+      );
+
+      for (const block of articleBlocks) {
+        for (const child of block.childNodes) {
+          if (
+            child.nodeType === Node.TEXT_NODE ||
+            child.nodeType === Node.ELEMENT_NODE
+          ) {
+            article.content += child.textContent.trim() + " ";
+          }
+        }
+      }
       return article;
     });
     console.log("Got article", newsArticle);
