@@ -11,6 +11,7 @@ class PulseByZerodhaScrapper {
 
   async init() {
     this.page = await this.browser.newPage();
+    console.log("Page created successfully.");
   }
 
   async closePage() {
@@ -62,17 +63,16 @@ class PulseByZerodhaScrapper {
     try {
       console.log("Scraping PulseByZerodha news...");
       await this.init();
-      await this.page.goto(
-        // "https://www.livemint.com/market/stock-market-news",
-        {
-          waitUntil: "networkidle2",
-        }
-      );
+      await this.page.goto("https://pulse.zerodha.com/", {
+        waitUntil: "networkidle2",
+      });
       console.log("Page loaded successfully.");
 
       const hrefs = await this.page.evaluate(() => {
-        // const storyElements = document.querySelectorAll("h2.headline a");
-        return Array.from(storyElements).map((link) => link.href);
+        const links = Array.from(
+          document.querySelectorAll("ul#news li.box.item h2.title a")
+        );
+        return links.map((link) => link.href);
       });
 
       if (hrefs.length === 0) {

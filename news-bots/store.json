@@ -63,10 +63,107 @@
       "href": "https://www.livemint.com/market/stock-market-news/from-staff-to-millionaires-swiggy-ipo-to-make-500-employees-crorepatis-11731478370460.html"
     }
   ],
-  "tribune": [],
-  "timesofindia": [],
-  "pulsebyzerodha": [],
+  "tribune": [
+    {
+      "href": "https://www.tribuneindia.com/news/world/the-fbi-arrested-man-whos-been-charged-with-planning-attack-on-new-york-stock-exchange/"
+    }
+  ],
+  "timesofindia": [
+    {
+      "href": "https://timesofindia.indiatimes.com/business/markets/sensex/rupee-falls-5-paise-to-83-01-against-us-dollar-in-early-trade/articleshow/107548671.cms"
+    },
+    {
+      "href": "https://timesofindia.indiatimes.com/business/india-business/adani-us-indictment-how-the-bribery-drama-allegedly-unfolded/articleshow/115550432.cms"
+    },
+    {
+      "href": "https://timesofindia.indiatimes.com/business/india-business/gold-rates-in-coimbatore-key-insights-for-smart-decisions/articleshow/115530595.cms"
+    },
+    {
+      "href": "https://timesofindia.indiatimes.com/business/india-business/ntpc-green-energys-1-2-billion-ipo-fully-sold-on-last-day/articleshow/115554299.cms"
+    },
+    {
+      "href": "https://timesofindia.indiatimes.com/business/india-business/rajkot-municipal-corporation-raises-rs-100-crore-through-bond-issue-to-boost-infra-services/articleshow/115556626.cms"
+    },
+    {
+      "href": "https://timesofindia.indiatimes.com/business/india-business/avaada-group-to-invest-rs-5800-crore-to-develop-1200-mw-pumped-hydropower-storage-project-in-rajasthan/articleshow/115562348.cms"
+    },
+    {
+      "href": "https://timesofindia.indiatimes.com/business/india-business/ntpc-green-energy-signs-deal-worth-rs-2-lakh-crore-with-andhra-pradesh-govt/articleshow/115563216.cms"
+    },
+    {
+      "href": "https://timesofindia.indiatimes.com/business/india-business/gautam-adani-us-indictment-us-bribery-charges-adani-group-share-prices/articleshow/115563516.cms"
+    },
+    {
+      "href": "https://timesofindia.indiatimes.com/business/india-business/adani-group-stocks-whats-the-outlook-after-us-charges-gautam-adani-heres-what-investors-should-know/articleshow/115558592.cms"
+    },
+    {
+      "href": "https://timesofindia.indiatimes.com/business/india-business/now-sebi-investigating-whether-adani-group-flouted-disclosure-rules/articleshow/115559124.cms"
+    }
+  ],
+  "pulsebyzerodha": [
+    {
+      "href": "https://economictimes.indiatimes.com/markets/web-stories/gainers-amp-losers-raymond-adani-stocks-among-7-stocks-that-lead-spot-light-today/slideshow/115564611.cms"
+    },
+    {
+      "href": "https://economictimes.indiatimes.com/markets/stocks/stock-watch/stock-market-update-stocks-that-hit-52-week-lows-on-nse-in-todays-trade/articleshow/115564728.cms"
+    },
+    {
+      "href": "https://economictimes.indiatimes.com/markets/stocks/news/7-stocks-in-dolly-khannas-portfolio-soar-40-240-in-fy25/slideshow/115565276.cms"
+    },
+    {
+      "href": "https://www.ndtvprofit.com/markets/sensex-nifty-snap-two-week-losing-steak-market-wrap"
+    },
+    {
+      "href": "https://economictimes.indiatimes.com/markets/stocks/stock-watch/sensex-rises-these-stocks-gained-over-10-on-bse/articleshow/115565042.cms"
+    },
+    {
+      "href": "https://economictimes.indiatimes.com/markets/stocks/stock-watch/stock-market-update-nifty-pharma-index-1-02/articleshow/115565729.cms"
+    },
+    {
+      "href": "https://www.ndtvprofit.com/business/ntpc-green-energy-to-set-up-renewable-energy-projects-worth-rs-2-lakh-crore-in-andhra-pradesh"
+    },
+    {
+      "href": "https://www.thehindu.com/business/markets/rupee-rises-6-paise-to-close-at-8444-against-us-dollar/article68898049.ece"
+    },
+    {
+      "href": "https://www.ndtvprofit.com/business/central-bank-of-india-gets-rbi-nod-for-insurance-jv-with-italys-generali-group"
+    },
+    {
+      "href": "https://www.thehindu.com/business/markets/markets-stage-sharp-recovery-sensex-reclaims-79k-level-nifty-surges-55735-points/article68898048.ece"
+    }
+  ],
   "cnbc": [],
   "indianexpress": [],
-  "hindustantimes": []
+  "hindustantimes": [
+    {
+      "href": "https://www.hindustantimes.com/cricket/best-in-the-world-24-carat-gold-lasith-malinga-michael-vaughan-take-a-bow-at-jasprit-bumrah-after-sensational-spell-101732270512943.html"
+    },
+    {
+      "href": "https://www.hindustantimes.com/india-news/jagan-turned-andhra-into-adani-state-handed-it-over-as-a-blank-cheque-congress-ys-sharmila-101732270605300.html"
+    },
+    {
+      "href": "https://www.hindustantimes.com/cricket/virat-kohli-single-handedly-convinces-bumrah-for-drs-to-give-india-first-breakthrough-vs-australia-take-it-take-it-101732261363517.html"
+    },
+    {
+      "href": "https://www.hindustantimes.com/lifestyle/health/ashish-chanchlani-on-his-inspiring-40-kgs-weight-loss-journey-body-shaming-motivation-and-more-101732267407601.html"
+    },
+    {
+      "href": "https://www.hindustantimes.com/entertainment/telugu-cinema/nagarjuna-reveals-how-he-played-cupid-in-naga-chaitanya-sobhita-dhulipalas-love-story-101732266092312.html"
+    },
+    {
+      "href": "https://www.hindustantimes.com/entertainment/music/ar-rahman-saira-banu-son-ameen-baby-baseless-rumours-divorce-101732270102315.html"
+    },
+    {
+      "href": "https://www.hindustantimes.com/world-news/us-news/loud-bang-outside-us-embassy-in-london-causes-area-lockdown-police-responds-101732272829095.html"
+    },
+    {
+      "href": "https://www.hindustantimes.com/india-news/maharashtra-election-live-updates-assembly-elections-2024-result-date-time-bjp-congress-shiv-sena-latest-news-today-101732255958172.html"
+    },
+    {
+      "href": "https://www.hindustantimes.com/india-news/supreme-court-delhi-pollution-hearing-aqi-severe-grap-4-truck-entry-101732260307348.html"
+    },
+    {
+      "href": "https://www.hindustantimes.com/india-news/cashforvotes-row-bjps-vinod-tawde-sends-defamation-notices-to-mallikarjun-kharge-rahul-gandhi-101732271055577.html"
+    }
+  ]
 }
