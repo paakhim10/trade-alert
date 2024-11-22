@@ -1,14 +1,15 @@
 import connectDB from "./config/db.js";
 import { User } from "./models/user.model.js";
 import initializeFirebase from "./config/firebase.js";
+import dotenv from "dotenv";
 
-await connectDB();
+dotenv.config();
 
 const sendNotification = async (token, admin) => {
   const message = {
     notification: {
-      title: "Test message",
-      body: "This is a test notification",
+      title: "You should read this news!",
+      body: "USA is planning to break google by forcing it to sell google chrome",
     },
     token: token, // Add the token here
   };
@@ -21,16 +22,26 @@ const sendNotification = async (token, admin) => {
   }
 };
 
+const fetchUsers = async () => {
+  try {
+    const users = await User.find();
+    return users;
+  } catch (error) {
+    console.error("Error fetching users:", error);
+  }
+};
+
 // Main function to initialize and execute tasks
 const main = async () => {
   try {
-    // await initializeDatabase();
+    await connectDB();
     const admin = initializeFirebase();
 
-    // Example usage of sendNotification
-    const deviceToken =
-      "e2UjYjNlR9KfEANZLqX7QZ:APA91bHPbJu7COa95DpEuoMjCSscSFUqt0MU_tpMEuALt0GGFkUj12IVoqYX9uwRVXkC3FCLVm0B1CptfckMF5OF0wcOiLMf8-VhdEAaGQ1de9WFCH16m5o"; // Replace with the actual device token
-    await sendNotification(deviceToken, admin);
+    const users = await fetchUsers();
+
+    for (const user of users) {
+      await sendNotification(user.notificationToken, admin);
+    }
   } catch (error) {
     console.error("An error occurred during execution:", error);
   }
