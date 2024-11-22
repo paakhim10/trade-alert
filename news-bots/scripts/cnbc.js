@@ -11,7 +11,7 @@ class CNBCScraper {
 
   async init() {
     this.page = await this.browser.newPage();
-    console.log("Page created successfully.");
+    // console.log("Page created successfully.");
   }
 
   async closePage() {
@@ -27,13 +27,18 @@ class CNBCScraper {
     const newsArticle = await this.page.evaluate(() => {
       const article = {};
       article.title = document.querySelector(
-        "h1.ArticleHeader-headline"
+        "h1.ArticleHeader-headocumdline"
       )?.innerText;
       const articleBlocks = document.querySelectorAll("div.group");
       for (const block of articleBlocks) {
-        // traverse every children and get the innertext of it
-
-        const childrenBlock = document.childNodes();
+        for (const child of block.childNodes) {
+          if (
+            child.nodeType === Node.TEXT_NODE ||
+            child.nodeType === Node.ELEMENT_NODE
+          ) {
+            article.content += child.textContent.trim() + " ";
+          }
+        }
       }
       return article;
     });
@@ -45,7 +50,7 @@ class CNBCScraper {
 
   async loadStoredNews() {
     try {
-      console.log("Loading stored news data...");
+      // console.log("Loading stored news data...");
       const data = await fs.readFile(this.newsStoragePath, "utf-8");
       return JSON.parse(data).cnbc;
     } catch (error) {
@@ -68,17 +73,17 @@ class CNBCScraper {
       JSON.stringify(jsonData, null, 2),
       "utf-8"
     );
-    console.log("News data saved successfully.");
+    // console.log("News data saved successfully.");
   }
 
   async scrapeNews() {
     try {
-      console.log("Scraping CNBC news...");
+      // console.log("Scraping CNBC news...");
       await this.init();
       await this.page.goto("https://www.cnbc.com/world/", {
         waitUntil: "networkidle2",
       });
-      console.log("CNBC page loaded successfully.");
+      // console.log("CNBC page loaded successfully.");
 
       const hrefs = await this.page.evaluate(() => {
         const links = Array.from(
@@ -89,20 +94,20 @@ class CNBCScraper {
         return links.map((link) => link.href);
       });
       if (hrefs.length === 0) {
-        console.log("No links found on the page");
+        // console.log("No links found on the page");
         await this.closePage();
         return;
       }
-      console.log("Number of links found:", hrefs.length);
+      // console.log("Number of links found:", hrefs.length);
 
       let newsStorage = await this.loadStoredNews();
       const newHrefs = hrefs.slice(0, 10).filter((href) => {
         return !newsStorage.some((news) => news.href === href);
       });
-      console.log(
-        "No. of new links found during this scraping",
-        newHrefs.length
-      );
+      // console.log(
+      //   "No. of new links found during this scraping",
+      //   newHrefs.length
+      // );
 
       newHrefs.forEach((href) => {
         newsStorage.unshift({ href });
@@ -110,10 +115,10 @@ class CNBCScraper {
 
       newsStorage = newsStorage.slice(0, 10);
 
-      console.log("Getting full article and saving to DB...");
+      // console.log("Getting full article and saving to DB...");
 
       for (const href of newHrefs) {
-        console.log("Scraping article:", href);
+        // console.log("clearticle:", href);
         const article = await this.getFullArticle(href);
         if (
           article.title === undefined ||
@@ -121,10 +126,10 @@ class CNBCScraper {
           article.title === null ||
           article.content === null
         ) {
-          console.log("Skipping article:", href);
+          // console.log("Skipping article:", href);
           continue;
         }
-        console.log("Saving article in Database:", article.title);
+        // console.log("Saving article in Database:", article.title);
         try {
           await LiveMint.create({
             title: article.title,
@@ -132,7 +137,7 @@ class CNBCScraper {
             content: article.content,
           });
         } catch (err) {
-          console.log("Error in saving article", href);
+          // console.log("Error in saving article", href);
         }
       }
 

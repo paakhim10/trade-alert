@@ -23,13 +23,38 @@ class EconomicTimesScraper {
   async getFullArticle(href) {
     await this.page.goto(href, { waitUntil: "networkidle2" });
 
+    // const newsArticle = await this.page.evaluate(() => {
+    //   const article = {};
+    //   article.title = document.querySelector("")?.innerText;
+    //   article.content = document.querySelector("")?.innerText;
+    //   return article;
+    // });
+
     const newsArticle = await this.page.evaluate(() => {
       const article = {};
       article.title = document.querySelector("h1.artTitle")?.innerText;
-      article.content = document.querySelector("div.artText")?.innerText;
+      const articleBlocks = document.querySelectorAll("div.artText");
+
+      const cleanHTML = (html) => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, "text/html");
+        return doc.body.textContent || "";
+      };
+
+      for (const block of articleBlocks) {
+        for (const child of block.childNodes) {
+          if (
+            child.nodeType === Node.TEXT_NODE ||
+            child.nodeType === Node.ELEMENT_NODE
+          ) {
+            article.content += child.textContent.trim() + " ";
+          }
+        }
+      }
+      article.content = cleanHTML(article.content);
       return article;
     });
-
+    console.log("article is: ", newsArticle);
     newsArticle.link = href;
     return newsArticle;
   }
