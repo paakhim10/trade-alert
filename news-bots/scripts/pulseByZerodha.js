@@ -25,10 +25,23 @@ class PulseByZerodhaScrapper {
     console.log("Getting article from", href);
     const newsArticle = await this.page.evaluate(() => {
       const article = {};
-      //   article.title = document.querySelector("h1#article-0")?.innerText;
-      //   article.content = document.querySelector(
-      //     "div.storyPage_storyContent__m_MYl"
-      //   )?.innerText;
+      article.title = document.querySelector(
+        "h1.story-base-template-m__story-headline__zqorD"
+      )?.innerText;
+      const articleBlocks = document.querySelectorAll(
+        "div.story-elements-m__story-element-ctx__tV2U1 p"
+      );
+
+      for (const block of articleBlocks) {
+        for (const child of block.childNodes) {
+          if (
+            child.nodeType === Node.TEXT_NODE ||
+            child.nodeType === Node.ELEMENT_NODE
+          ) {
+            article.content += child.textContent.trim() + " ";
+          }
+        }
+      }
       return article;
     });
     console.log("Got article", newsArticle);
@@ -83,9 +96,10 @@ class PulseByZerodhaScrapper {
       console.log("Number of links found:", hrefs.length);
 
       let newsStorage = await this.loadStoredNews();
-      const newHrefs = hrefs.slice(0, 10).filter((href) => {
-        return !newsStorage.some((news) => news.href === href);
-      });
+      // const newHrefs = hrefs.slice(0, 10).filter((href) => {
+      //   return !newsStorage.some((news) => news.href === href);
+      // });
+      const newHrefs = hrefs.slice(0, 10);
 
       console.log(
         "No. of new links found during this scraping",

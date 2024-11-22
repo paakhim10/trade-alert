@@ -24,10 +24,19 @@ class TheTimesOfIndiaScraper {
     console.log("Getting article from", href);
     const newsArticle = await this.page.evaluate(() => {
       const article = {};
-      //   article.title = document.querySelector("h1#article-0")?.innerText;
-      //   article.content = document.querySelector(
-      //     "div.storyPage_storyContent__m_MYl"
-      //   )?.innerText;
+      article.title = document.querySelector("h1.HNMDR span")?.innerText;
+      const articleBlocks = document.querySelectorAll("div._s30J.clearfix");
+
+      for (const block of articleBlocks) {
+        for (const child of block.childNodes) {
+          if (
+            child.nodeType === Node.TEXT_NODE ||
+            child.nodeType === Node.ELEMENT_NODE
+          ) {
+            article.content += child.textContent.trim() + " ";
+          }
+        }
+      }
       return article;
     });
     console.log("Got article", newsArticle);
