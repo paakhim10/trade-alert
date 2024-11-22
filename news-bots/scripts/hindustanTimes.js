@@ -63,7 +63,7 @@ class HindustantimesScrapper {
       console.log("Scraping Hindustantimes news...");
       await this.init();
       await this.page.goto(
-        // "https://www.livemint.com/market/stock-market-news",
+        "https://www.hindustantimes.com/topic/global-stock-markets",
         {
           waitUntil: "networkidle2",
         }
@@ -71,13 +71,16 @@ class HindustantimesScrapper {
       console.log("Page loaded successfully.");
 
       const hrefs = await this.page.evaluate(() => {
-        // const storyElements = document.querySelectorAll("h2.headline a");
-        return Array.from(storyElements).map((link) => link.href);
+        const links = Array.from(
+          document.querySelectorAll("div.row.track h3.hdg3 a")
+        );
+        return links.map((link) => link.href);
       });
 
       if (hrefs.length === 0) {
         console.log("No links found on the page");
-        await this.closePage();
+        await this.page.waitForTimeout(5 * 60 * 1000);
+        // await this.closePage();
         return;
       }
       console.log("Number of links found:", hrefs.length);

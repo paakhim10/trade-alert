@@ -63,7 +63,7 @@ class TheTimesOfIndiaScraper {
       console.log("Scraping Times Of India news...");
       await this.init();
       await this.page.goto(
-        // "https://www.livemint.com/market/stock-market-news",
+        "https://timesofindia.indiatimes.com/business/india-business",
         {
           waitUntil: "networkidle2",
         }
@@ -71,8 +71,8 @@ class TheTimesOfIndiaScraper {
       console.log("Page loaded successfully.");
 
       const hrefs = await this.page.evaluate(() => {
-        // const storyElements = document.querySelectorAll("h2.headline a");
-        return Array.from(storyElements).map((link) => link.href);
+        const links = Array.from(document.querySelectorAll("div.row a"));
+        return links.map((link) => link.href);
       });
 
       if (hrefs.length === 0) {
