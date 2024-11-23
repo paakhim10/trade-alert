@@ -6,7 +6,7 @@ import Plot from "react-plotly.js";
 const StockOverview = ({ user }) => {
   const stockPrices = {
     Reliance: 2450,
-    Tata: 780,
+    TCS: 780,
     Infosys: 1450,
     HDFC_Bank: 1610,
     Airtel: 900,
@@ -74,7 +74,7 @@ const StockOverview = ({ user }) => {
             <em>₹ {totalInvestment.toLocaleString()}</em>
           </div>
           <div className="dashboard-stockoverview-lower-half">
-            Your Companies
+            View your portfolio interactively.
           </div>
         </Container>
         <Container fluid className="dashboard-stockoverview-right-section">
