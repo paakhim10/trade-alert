@@ -65,7 +65,7 @@ const Dashboard = () => {
       if (response.success) {
         console.log("User details:", response.data);
         setUser(response.data);
-        Storage.setData("userInfo", JSON.stringify(response.data));
+        Storage.setData("userInfo", response.data);
       } else {
         console.error("Failed to fetch user details.");
       }
