@@ -10,20 +10,35 @@ import Plot from "react-plotly.js";
 import "./MarketTrend.css";
 
 const MarketTrend = () => {
-  const [selectedStocks, setSelectedStocks] = useState(["AAPL"]); // Default selection
+  const [selectedStocks, setSelectedStocks] = useState(["Reliance"]); // Default selection
   const [stockData, setStockData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const allStocks = ["AAPL", "GOOGL", "AMZN"]; // List of all available stocks
 
-  // Simulated stock data fetching
+  // Current stock prices
+  const stockPrices = {
+    Reliance: 2450,
+    TCS: 780,
+    Infosys: 1450,
+    HDFC_Bank: 1610,
+    Airtel: 900,
+  };
+
+  const allStocks = Object.keys(stockPrices); // Available stocks based on the current stockPrices
+
+  // Simulated stock data fetching (Dummy data for the past 5 days)
   const fetchStockData = async () => {
-    const mockData = {
-      AAPL: [150, 152, 155, 158, 160],
-      GOOGL: [2800, 2850, 2900, 2950, 3000],
-      AMZN: [3400, 3450, 3500, 3550, 3600],
-    };
+    const mockData = {};
 
-    // Simulating delay
+    allStocks.forEach((stock) => {
+      // Generate dummy data for 5 days by fluctuating the base price by ±3%
+      const basePrice = stockPrices[stock];
+      const priceFluctuations = Array.from({ length: 5 }, (_, i) => {
+        const fluctuation = Math.random() * 0.06 * basePrice - 0.03 * basePrice; // ±3% fluctuation
+        return parseFloat((basePrice + fluctuation).toFixed(2)); // Adjusted price for each day
+      });
+      mockData[stock] = priceFluctuations;
+    });
+
     setTimeout(() => {
       setStockData(mockData);
       setIsLoading(false);
@@ -54,7 +69,7 @@ const MarketTrend = () => {
   const layout = {
     title: `Stock Prices: ${selectedStocks.join(", ")}`,
     xaxis: { title: "Days", showgrid: true },
-    yaxis: { title: "Price (USD)", showgrid: true },
+    yaxis: { title: "Price (INR)", showgrid: true },
     plot_bgcolor: "#E5E5E5",
     paper_bgcolor: "#E5E5E5",
     autosize: true,

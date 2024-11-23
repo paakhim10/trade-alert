@@ -2,19 +2,44 @@ import { useEffect, useState } from "react";
 import "./InvestmentGlance.css";
 import { Container, Table } from "react-bootstrap";
 
-const InvestmentGlance = ({ user }) => {
+const InvestmentGlance = () => {
   const [items, setItems] = useState([]);
+
+  // Hardcoded stock data
+  const stockData = [
+    { name: "Reliance", quantity: 10 },
+    { name: "TCS", quantity: 15 },
+    { name: "Infosys", quantity: 8 },
+    { name: "HDFC_Bank", quantity: 12 },
+    { name: "Airtel", quantity: 10 },
+  ];
+
+  const stockPrices = {
+    Reliance: 2450,
+    TCS: 780,
+    Infosys: 1450,
+    HDFC_Bank: 1610,
+    Airtel: 900,
+  };
+
+  const stockTrends = {
+    Reliance: "Up",
+    TCS: "Down",
+    Infosys: "Up",
+    HDFC_Bank: "Down",
+    Airtel: "Up",
+  };
+
   useEffect(() => {
-    const investments = user.user.companyStocks.map((company) => {
-      return {
-        company: company.name,
-        quantity: company.quantity,
-        // currentStockPrice: investment.currentStockPrice,
-        // trend: investment.trend,
-      };
-    });
+    const investments = stockData.map((stock) => ({
+      company: stock.name,
+      quantity: stock.quantity,
+      currentStockPrice: stockPrices[stock.name],
+      trend: stockTrends[stock.name],
+    }));
     setItems(investments);
   }, []);
+
   return (
     <>
       <Container className="investment-glance-section">
@@ -27,21 +52,19 @@ const InvestmentGlance = ({ user }) => {
               <tr>
                 <th>Company</th>
                 <th>Quantity</th>
-                <th>Current Stock Price</th>
+                <th>Current Stock Price (INR)</th>
                 <th>Trend</th>
               </tr>
             </thead>
             <tbody>
-              {/* Sample Data Row */}
               {items.map((item, index) => (
                 <tr key={index}>
                   <td>{item.company}</td>
                   <td>{item.quantity}</td>
-                  <td>$150</td>
-                  <td>Up</td>
+                  <td>{item.currentStockPrice}</td>
+                  <td>{item.trend}</td>
                 </tr>
               ))}
-              {/* Add more rows here as needed */}
             </tbody>
           </Table>
         </div>

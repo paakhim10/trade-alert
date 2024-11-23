@@ -4,83 +4,84 @@ import { Container } from "react-bootstrap";
 import Plot from "react-plotly.js";
 
 const StockOverview = ({ user }) => {
-  const [data, setData] = useState([
-    {
-      values: [450, 300, 200, 50],
-      labels: ["Reliance", "Tata", "MDH", "Airtel"],
-      type: "pie",
-      hoverinfo: "label+percent",
-      textinfo: "label+percent",
-      textposition: "inside",
-      marker: {
-        colors: ["#636EFA", "#EF553B", "#00CC96", "#AB63FA"],
+  const stockPrices = {
+    Reliance: 2450,
+    Tata: 780,
+    Infosys: 1450,
+    HDFC_Bank: 1610,
+    Airtel: 900,
+  };
+
+  const [data, setData] = useState([]);
+  const [totalInvestment, setTotalInvestment] = useState(0);
+
+  useEffect(() => {
+    const userStocks = [
+      { name: "Reliance", quantity: 10 },
+      { name: "TCS", quantity: 15 },
+      { name: "Infosys", quantity: 8 },
+      { name: "HDFC_Bank", quantity: 12 },
+      { name: "Airtel", quantity: 10 },
+    ];
+
+    // Calculate total investment dynamically
+    const total = userStocks.reduce(
+      (sum, stock) => sum + stock.quantity * stockPrices[stock.name],
+      0
+    );
+
+    // Prepare data for the pie chart
+    setData([
+      {
+        values: userStocks.map((stock) => stock.quantity),
+        labels: userStocks.map((stock) => stock.name),
+        type: "pie",
+        hoverinfo: "label+percent",
+        textinfo: "label+percent",
+        textposition: "inside",
+        marker: {
+          colors: ["#636EFA", "#EF553B", "#00CC96", "#AB63FA", "#FFA15A"],
+        },
       },
-    },
-  ]);
+    ]);
+    setTotalInvestment(total);
+  }, []);
 
   const layout = {
     title: {
       text: "Stocks Distribution",
       font: { size: 30, color: "#FFC0C0" },
     },
-    plot_bgcolor: "rgba(0,0,0,0)", // Transparent plot area background
+    plot_bgcolor: "rgba(0,0,0,0)",
     paper_bgcolor: "rgba(0,0,0,0)",
     legend: {
       font: {
-        color: "#FFC0C0", // Set legend label color to match the title color
+        color: "#FFC0C0",
       },
     },
     responsive: true,
   };
-  useEffect(() => {
-    setData([
-      {
-        values: user.user.companyStocks.map((stock) => stock.quantity),
-        labels: user.user.companyStocks.map((stock) => stock.name),
-        type: "pie",
-        hoverinfo: "label+percent",
-        textinfo: "label+percent",
-        textposition: "inside",
-        marker: {
-          colors: [
-            "#636EFA",
-            "#EF553B",
-            "#00CC96",
-            "#AB63FA",
-            "#FFA15A",
-            "#19D3F3",
-            "#FF6692",
-            "#B6E880",
-            "#FF97FF",
-            "#FFC83D",
-            "#FF83FA",
-          ],
-        },
-      },
-    ]);
-  }, []);
+
   return (
-    <>
-      <Container fluid className="dashboard-stockoverview-section">
-        <Container fluid className="dashboard-stockoverview-heading">
-          <h2>Dashboard</h2>
+    <Container fluid className="dashboard-stockoverview-section">
+      <Container fluid className="dashboard-stockoverview-heading">
+        <h2>Dashboard</h2>
+      </Container>
+      <Container fluid className="dashboard-stockoverview-content">
+        <Container fluid className="dashboard-stockoverview-left-section">
+          <div className="dashboard-stockoverview-upper-half">
+            <h3>Calculated Investment Value</h3>
+            <em>₹ {totalInvestment.toLocaleString()}</em>
+          </div>
+          <div className="dashboard-stockoverview-lower-half">
+            Your Companies
+          </div>
         </Container>
-        <Container fluid className="dashboard-stockoverview-content">
-          <Container fluid className="dashboard-stockoverview-left-section">
-            <div className="dashboard-stockoverview-upper-half">
-              <h3>Calculated Investment Value</h3>
-              <em>₹ 500</em>
-            </div>
-            <div className="dashboard-stockoverview-lower-half">
-              Your Companies
-            </div>
-          </Container>
-          <Container fluid className="dashboard-stockoverview-right-section">
-            <Plot data={data} layout={layout} className="pie-chart" />
-          </Container>
+        <Container fluid className="dashboard-stockoverview-right-section">
+          <Plot data={data} layout={layout} className="pie-chart" />
         </Container>
       </Container>
-    </>
+    </Container>
   );
 };
 
