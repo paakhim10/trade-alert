@@ -1,9 +1,10 @@
+import { useEffect, useState } from "react";
 import "./StockOverview.css";
 import { Container } from "react-bootstrap";
 import Plot from "react-plotly.js";
 
-const StockOverview = () => {
-  const data = [
+const StockOverview = ({ user }) => {
+  const [data, setData] = useState([
     {
       values: [450, 300, 200, 50],
       labels: ["Reliance", "Tata", "MDH", "Airtel"],
@@ -15,7 +16,7 @@ const StockOverview = () => {
         colors: ["#636EFA", "#EF553B", "#00CC96", "#AB63FA"],
       },
     },
-  ];
+  ]);
 
   const layout = {
     title: {
@@ -31,6 +32,33 @@ const StockOverview = () => {
     },
     responsive: true,
   };
+  useEffect(() => {
+    setData([
+      {
+        values: user.user.companyStocks.map((stock) => stock.quantity),
+        labels: user.user.companyStocks.map((stock) => stock.name),
+        type: "pie",
+        hoverinfo: "label+percent",
+        textinfo: "label+percent",
+        textposition: "inside",
+        marker: {
+          colors: [
+            "#636EFA",
+            "#EF553B",
+            "#00CC96",
+            "#AB63FA",
+            "#FFA15A",
+            "#19D3F3",
+            "#FF6692",
+            "#B6E880",
+            "#FF97FF",
+            "#FFC83D",
+            "#FF83FA",
+          ],
+        },
+      },
+    ]);
+  }, []);
   return (
     <>
       <Container fluid className="dashboard-stockoverview-section">

@@ -2,37 +2,8 @@ import "./PersonalisedRecommendation.css";
 import { Carousel, Card, Container, Badge } from "react-bootstrap";
 import { useState, useEffect } from "react";
 
-const PersonalisedRecommendation = () => {
-  const items = [
-    {
-      heading:
-        "Sensex, Nifty end choppy trade on flat notes weighed by weak earnings and foreign outflows",
-      content:
-        "Indian blue-chip equity indices closed flat on Monday after fluctuating between gains and losses, as concerns over weak earnings and sustained foreign outflows continued to weigh on domestic equities.",
-      company: "Google",
-    },
-    {
-      heading:
-        "Sensex, Nifty end choppy trade on flat notes weighed by weak earnings and foreign outflows",
-      content:
-        "Indian blue-chip equity indices closed flat on Monday after fluctuating between gains and losses, as concerns over weak earnings and sustained foreign outflows continued to weigh on domestic equities.",
-      company: "Google",
-    },
-    {
-      heading:
-        "Sensex, Nifty end choppy trade on flat notes weighed by weak earnings and foreign outflows",
-      content:
-        "Indian blue-chip equity indices closed flat on Monday after fluctuating between gains and losses, as concerns over weak earnings and sustained foreign outflows continued to weigh on domestic equities.",
-      company: "Google",
-    },
-    {
-      heading:
-        "Sensex, Nifty end choppy trade on flat notes weighed by weak earnings and foreign outflows",
-      content:
-        "Indian blue-chip equity indices closed flat on Monday after fluctuating between gains and losses, as concerns over weak earnings and sustained foreign outflows continued to weigh on domestic equities.",
-      company: "Google",
-    },
-  ];
+const PersonalisedRecommendation = ({ user }) => {
+  const [items, setItems] = useState([]);
 
   const [itemsPerGroup, setItemsPerGroup] = useState(2);
 
@@ -44,7 +15,14 @@ const PersonalisedRecommendation = () => {
 
     handleResize(); // Set initial value
     window.addEventListener("resize", handleResize);
-
+    const notifications = user.userNotification.map((notification) => {
+      return {
+        heading: notification.title,
+        content: notification.content,
+        link: notification.link,
+      };
+    });
+    setItems(notifications);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
@@ -71,12 +49,14 @@ const PersonalisedRecommendation = () => {
                             {item.heading}
                           </Card.Title>
                           <div className="news-card-tags">
-                            <Badge pill className="news-card-badge-green">
+                            {/* <Badge pill className="news-card-badge-green">
                               {item.company}
-                            </Badge>
-                            <Badge pill className="news-card-badge-green">
-                              Link
-                            </Badge>
+                            </Badge> */}
+                            <a href={item.link}>
+                              <Badge pill className="news-card-badge-green">
+                                Link
+                              </Badge>
+                            </a>
                           </div>
                           <Card.Text className="news-card-description">
                             {item.content}

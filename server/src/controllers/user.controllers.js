@@ -3,6 +3,7 @@ import ApiResponse from "../utils/apiResponse.js";
 import AsyncHandler from "../utils/asyncHandler.js";
 import logger from "../utils/logger.js";
 import { User } from "../models/user.model.js";
+import { Notification } from "../models/notification.model.js";
 
 export const getUser = AsyncHandler(async (req, res) => {
   logger.debug("getUser route");
@@ -10,11 +11,14 @@ export const getUser = AsyncHandler(async (req, res) => {
   if (!id) {
     throw new ApiError(400, "User id is required");
   }
-  const user = await User.findById(id);
+  const user = await User.findById(id).select("-password");
+  const userNotification = await Notification.find({ user: id });
   if (!user) {
     throw new ApiError(404, "User not found");
   }
-  return res.status(200).json(new ApiResponse(200, "User found", user));
+  return res
+    .status(200)
+    .json(new ApiResponse(200, "User found", { user, userNotification }));
 });
 
 export const saveNotificationToken = AsyncHandler(async (req, res) => {

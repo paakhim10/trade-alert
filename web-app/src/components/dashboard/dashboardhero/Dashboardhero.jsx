@@ -1,7 +1,7 @@
 import { Container } from "react-bootstrap";
 import "./dashboardhero.css";
 
-const Dashboardhero = () => {
+const Dashboardhero = ({ user }) => {
   return (
     <Container
       fluid
@@ -11,7 +11,7 @@ const Dashboardhero = () => {
     >
       <Container className="dashboard-hero-left-section d-flex justify-content-center align-content-center flex-column">
         <div className="dashboard-hero-upper-section mb-3">
-          <h2>Welcome Harsh Sharma</h2>
+          <h2>Welcome {user.user.name}</h2>
         </div>
         <div className="dashboard-hero-lower-section">
           <ul className="list-unstyled">

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import apiCall from "../../utils/axiosInstance";
 import { MdDelete } from "react-icons/md";
 import { toast } from "react-toastify";
+import Storage from "../../utils/storage";
 
 const Settings = () => {
   const [user, setUser] = useState({
@@ -26,6 +27,11 @@ const Settings = () => {
       },
     },
   });
+
+  useEffect(() => {
+    console.log(Storage.getData("userInfo").user);
+    setUser(Storage.getData("userInfo").user);
+  }, []);
 
   const [companySuggestions, setCompanySuggestions] = useState([]);
   const [query, setQuery] = useState("");

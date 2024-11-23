@@ -132,6 +132,7 @@ const Header = () => {
                     <Nav.Link
                       onClick={(e) => {
                         Storage.removeData("token");
+                        Storage.removeData("userInfo");
                         navigate("/");
                       }}
                     >

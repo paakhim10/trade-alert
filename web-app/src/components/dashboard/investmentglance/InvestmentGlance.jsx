@@ -1,7 +1,20 @@
+import { useEffect, useState } from "react";
 import "./InvestmentGlance.css";
 import { Container, Table } from "react-bootstrap";
 
-const InvestmentGlance = () => {
+const InvestmentGlance = ({ user }) => {
+  const [items, setItems] = useState([]);
+  useEffect(() => {
+    const investments = user.user.companyStocks.map((company) => {
+      return {
+        company: company.name,
+        quantity: company.quantity,
+        // currentStockPrice: investment.currentStockPrice,
+        // trend: investment.trend,
+      };
+    });
+    setItems(investments);
+  }, []);
   return (
     <>
       <Container className="investment-glance-section">
@@ -20,24 +33,14 @@ const InvestmentGlance = () => {
             </thead>
             <tbody>
               {/* Sample Data Row */}
-              <tr>
-                <td>Company A</td>
-                <td>100</td>
-                <td>$150</td>
-                <td>Up</td>
-              </tr>
-              <tr>
-                <td>Company A</td>
-                <td>100</td>
-                <td>$150</td>
-                <td>Up</td>
-              </tr>
-              <tr>
-                <td>Company A</td>
-                <td>100</td>
-                <td>$150</td>
-                <td>Up</td>
-              </tr>
+              {items.map((item, index) => (
+                <tr key={index}>
+                  <td>{item.company}</td>
+                  <td>{item.quantity}</td>
+                  <td>$150</td>
+                  <td>Up</td>
+                </tr>
+              ))}
               {/* Add more rows here as needed */}
             </tbody>
           </Table>
