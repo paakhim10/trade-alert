@@ -1,21 +1,21 @@
-# Major Project
+# Trade Alert
 
 ## Project Description
 
-Red Alert is a notification system that keeps users informed about critical news affecting their stock portfolio. In today's fast-paced market, staying updated on relevant information can be overwhelming with a flood of news from various sources. Red Alert streamlines this process by delivering timely notifications for important articles directly to users, eliminating the need to constantly monitor multiple platforms.
+Trade Alert is a notification system that keeps users informed about critical news affecting their stock portfolio. In today's fast-paced market, staying updated on relevant information can be overwhelming with a flood of news from various sources. Trade Alert streamlines this process by delivering timely notifications for important articles directly to users, eliminating the need to constantly monitor multiple platforms.
 
 ## Key Features
 
 **Personalized Notifications:** Users receive notifications tailored to their specific stock portfolio, ensuring they stay informed about relevant news.<br>
-**AI/ML Integration:** Leveraging advanced Artificial Intelligence and Machine Learning algorithms, Red Alert identifies and prioritizes news articles based on their potential impact on the user's investments.<br>
-**Efficient Information Delivery:** Red Alert minimizes information overload by delivering only the most critical news articles, allowing users to focus on key updates without sifting through countless irrelevant sources.<br>
+**AI/ML Integration:** Leveraging advanced Artificial Intelligence and Machine Learning algorithms, Trade Alert identifies and prioritizes news articles based on their potential impact on the user's investments.<br>
+**Efficient Information Delivery:** Trade Alert minimizes information overload by delivering only the most critical news articles, allowing users to focus on key updates without sifting through countless irrelevant sources.<br>
 **MERN Stack:** The application is built using the MERN (MongoDB, Express.js, React.js, Node.js) stack, providing a robust and scalable foundation for development.
 
 ## How It Works
 
 **User Profile Setup:** Users create a profile and input their stock portfolio details.<br>
-**AI Analysis:** Red Alert's AI algorithms continuously monitor news sources and analyze articles to identify those relevant to the user's portfolio.<br>
-**Notification Delivery:** Red Alert sends a notification to the user's preferred device when significant news is detected, ensuring timely access to important information.
+**AI Analysis:** Trade Alert's AI algorithms continuously monitor news sources and analyze articles to identify those relevant to the user's portfolio.<br>
+**Notification Delivery:** Trade Alert sends a notification to the user's preferred device when significant news is detected, ensuring timely access to important information.
 
 ## Benefits
 
@@ -23,7 +23,7 @@ Red Alert is a notification system that keeps users informed about critical news
 **Time-Saving**: Users would not have to read irrelevant articles about the things that they do not need to worry about.<br>
 **Decision Making**: Showing only the news with priority level will not manipulate the user about a certain stock, it will give the user the ability to read the articile and make decision of buying and selling themselves.
 
-## Why Red Alert?
+## Why Trade Alert?
 
 **Save Time:** No need to constantly monitor multiple news sources for updates.<br>
 **Stay Informed:** Receive timely notifications about critical news affecting your investments.<br>
