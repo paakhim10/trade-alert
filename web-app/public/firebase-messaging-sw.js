@@ -23,36 +23,11 @@ messaging.onBackgroundMessage((payload) => {
   const notificationTitle = payload.data.title;
   const notificationOptions = {
     body: payload.data.body,
-    icon: "/assets/images/logo_icon.png",
-    badge: "/assets/images/logo_icon.png", // Small icon to appear on the notification tray
-    image: "/assets/images/logo_icon.png", // Main notification image
     vibrate: [200, 100, 200],
-    actions: [
-      {
-        action: "open_url",
-        title: "Read more",
-        icon: "/assets/images/logo_icon.png",
-      },
-    ],
   };
 
   return self.registration.showNotification(
     notificationTitle,
     notificationOptions
   );
-});
-
-self.addEventListener("notificationclick", (event) => {
-  event.notification.close(); // Close the notification
-
-  const url = event.notification.data?.url; // Access the URL from notification data
-  if (event.action === "open_url" && url) {
-    // Open the URL if the action matches
-    event.waitUntil(clients.openWindow(url));
-  } else if (url) {
-    // Fallback: Open URL on general notification click
-    event.waitUntil(clients.openWindow(url));
-  }
-
-  console.log("Notification clicked: ", event);
 });

@@ -18,6 +18,7 @@ import { HumanMessage, SystemMessage } from "@langchain/core/messages";
 import transporter from "./config/mailer.js";
 import path from "path";
 import fs from "fs/promises";
+import { Notification } from "./models/notification.model.js";
 
 dotenv.config();
 
@@ -267,6 +268,12 @@ const main = async () => {
               }
             }
           }
+          Notification.create({
+            user: user._id,
+            title: news.title,
+            content: news.content,
+            link: news.link,
+          });
         }
         console.log("\n------------------------------------\n");
       }
