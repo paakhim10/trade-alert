@@ -78,12 +78,12 @@ class CNBCScraper {
 
   async scrapeNews() {
     try {
-      // console.log("Scraping CNBC news...");
+      console.log("Scraping CNBC news...");
       await this.init();
       await this.page.goto("https://www.cnbc.com/world/", {
         waitUntil: "networkidle2",
       });
-      // console.log("CNBC page loaded successfully.");
+      console.log("CNBC page loaded successfully.");
 
       const hrefs = await this.page.evaluate(() => {
         const links = Array.from(
@@ -94,20 +94,20 @@ class CNBCScraper {
         return links.map((link) => link.href);
       });
       if (hrefs.length === 0) {
-        // console.log("No links found on the page");
+        console.log("No links found on the page");
         await this.closePage();
         return;
       }
-      // console.log("Number of links found:", hrefs.length);
+      console.log("Number of links found:", hrefs.length);
 
       let newsStorage = await this.loadStoredNews();
       const newHrefs = hrefs.slice(0, 10).filter((href) => {
         return !newsStorage.some((news) => news.href === href);
       });
-      // console.log(
-      //   "No. of new links found during this scraping",
-      //   newHrefs.length
-      // );
+      console.log(
+        "No. of new links found during this scraping",
+        newHrefs.length
+      );
 
       newHrefs.forEach((href) => {
         newsStorage.unshift({ href });
@@ -115,7 +115,7 @@ class CNBCScraper {
 
       newsStorage = newsStorage.slice(0, 10);
 
-      // console.log("Getting full article and saving to DB...");
+      console.log("Getting full article and saving to DB...");
 
       for (const href of newHrefs) {
         // console.log("clearticle:", href);
@@ -126,12 +126,12 @@ class CNBCScraper {
           article.title === null ||
           article.content === null
         ) {
-          // console.log("Skipping article:", href);
+          console.log("Skipping article:", href);
           continue;
         }
         // console.log("Saving article in Database:", article.title);
         try {
-          await LiveMint.create({
+          await CNBC.create({
             title: article.title,
             link: article.link,
             content: article.content,

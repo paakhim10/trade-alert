@@ -33,12 +33,6 @@
   ],
   "livemint": [
     {
-      "href": "https://www.livemint.com/market/stock-market-news/top-gainers-and-losers-today-on-22-november-2024-state-bank-of-india-tata-consultancy-services-bajaj-auto-among-most-active-stocks-check-full-list-here-11732271598118.html"
-    },
-    {
-      "href": "https://www.livemint.com/market/stock-market-news/hcl-tech-persistent-systems-over-150-stocks-hit-one-year-highs-on-bse-11732271367590.html"
-    },
-    {
       "href": "https://www.livemint.com/market/stock-market-news/multibagger-stock-suraj-estate-tumbles-29-from-recent-peak-is-it-a-good-chance-to-buy-11732266624465.html"
     },
     {
@@ -61,9 +55,24 @@
     },
     {
       "href": "https://www.livemint.com/market/stock-market-news/bse-to-introduce-f-o-contracts-on-43-stocks-3-adani-firms-paytm-zomato-others-to-join-list-from-december-13-11732280345851.html"
+    },
+    {
+      "href": "https://www.livemint.com/market/stock-market-news/european-firm-permira-enters-us-clo-market-as-issuance-booms-11732301988988.html"
+    },
+    {
+      "href": "https://www.livemint.com/market/stock-market-news/latest-stock-market-news-on-november-23-2024-live-updates-11732303000397.html"
     }
   ],
   "tribune": [
+    {
+      "href": "https://www.tribuneindia.com/news/haryana/paddy-lifting-improves-88-12-stock-cleared-from-ambala-mandis/"
+    },
+    {
+      "href": "https://www.tribuneindia.com/news/india/fresh-advisory-on-stock-scams-digital-arrests/"
+    },
+    {
+      "href": "https://www.tribuneindia.com/news/haryana/enough-stock-of-dap-says-saini-but-cong-inld-not-convinced/"
+    },
     {
       "href": "https://www.tribuneindia.com/news/punjab/citing-lack-of-trust-millers-say-they-wont-stock-paddy-on-premises/"
     },
@@ -81,59 +90,41 @@
     },
     {
       "href": "https://www.tribuneindia.com/news/ludhiana/civic-body-officials-take-stock-of-cleanliness-in-city/"
-    },
-    {
-      "href": "https://www.tribuneindia.com/news/haryana/paddy-lifting-improves-88-12-stock-cleared-from-ambala-mandis/"
-    },
-    {
-      "href": "https://www.tribuneindia.com/news/india/fresh-advisory-on-stock-scams-digital-arrests/"
-    },
-    {
-      "href": "https://www.tribuneindia.com/news/haryana/enough-stock-of-dap-says-saini-but-cong-inld-not-convinced/"
-    },
-    {
-      "href": "https://www.tribuneindia.com/news/world/the-fbi-arrested-man-whos-been-charged-with-planning-attack-on-new-york-stock-exchange/"
     }
   ],
   "timesofindia": [
     {
-      "href": "https://timesofindia.indiatimes.com/business/india-business/gautam-adani-us-indictment-us-bribery-charges-adani-group-share-prices/articleshow/115563516.cms"
-    },
-    {
-      "href": "https://timesofindia.indiatimes.com/business/india-business/indias-foreign-exchange-reserves-declined-17-76-billion-last-week/articleshow/115567541.cms"
-    },
-    {
-      "href": "https://timesofindia.indiatimes.com/business/india-business/six-adani-group-stocks-rebound-4-still-settled-in-red/articleshow/115567998.cms"
-    },
-    {
-      "href": "https://timesofindia.indiatimes.com/business/india-business/now-airlines-to-provide-beverages-snacks-or-meals-to-passengers-of-delayed-flights/articleshow/115571597.cms"
-    },
-    {
-      "href": "https://timesofindia.indiatimes.com/business/india-business/sebi-releases-new-guidelines-to-resolve-whistleblower-complaint-in-60-days/articleshow/115573106.cms"
-    },
-    {
-      "href": "https://timesofindia.indiatimes.com/business/india-business/adanis-knew-of-us-probe-when-they-sold-bribe-linked-assets-to-totalenergies-prosecutors-say/articleshow/115574800.cms"
-    },
-    {
-      "href": "https://timesofindia.indiatimes.com/business/india-business/dr-reddys-aurobindo-pharma-others-ink-pact-with-telangana-govt-to-set-up-facilities-in-pharma-city/articleshow/115575138.cms"
-    },
-    {
-      "href": "https://timesofindia.indiatimes.com/business/india-business/byju-raveendran-told-us-associate-to-flee-to-avoid-testifying-against-him/articleshow/115572135.cms"
-    },
-    {
-      "href": "https://timesofindia.indiatimes.com/business/india-business/binny-bansal-steps-down-from-phonepe-board/articleshow/115571844.cms"
-    },
-    {
       "href": "https://timesofindia.indiatimes.com/business/markets/sensex/rupee-falls-5-paise-to-83-01-against-us-dollar-in-early-trade/articleshow/107548671.cms"
+    },
+    {
+      "href": "https://timesofindia.indiatimes.com/business/india-business/forex-reserves-drop-by-record-18-billion-in-a-week/articleshow/115577344.cms"
+    },
+    {
+      "href": "https://timesofindia.indiatimes.com/business/india-business/us-indictment-adanis-foreign-backer-gqg-goes-for-buyback-after-stock-slides-19/articleshow/115577345.cms"
+    },
+    {
+      "href": "https://timesofindia.indiatimes.com/business/india-business/rupee-gains-six-paise-against-dollar-to-close-at-84-44/articleshow/115578155.cms"
+    },
+    {
+      "href": "https://timesofindia.indiatimes.com/business/india-business/us-fund-advent-to-sell-packaging-company-manjushree-for-1-billion/articleshow/115578219.cms"
+    },
+    {
+      "href": "https://timesofindia.indiatimes.com/business/india-business/ntpc-greens-ipo-attracts-1-8-billion-bids/articleshow/115578238.cms"
+    },
+    {
+      "href": "https://timesofindia.indiatimes.com/business/india-business/walmarts-bartlett-joins-flipkart-board/articleshow/115578271.cms"
+    },
+    {
+      "href": "https://timesofindia.indiatimes.com/business/india-business/finance-minister-sitharaman-brand-india-as-responsible-capitalist/articleshow/115578273.cms"
+    },
+    {
+      "href": "https://timesofindia.indiatimes.com/business/india-business/binny-bansal-quits-phonepe-board/articleshow/115578230.cms"
+    },
+    {
+      "href": "https://timesofindia.indiatimes.com/business/india-business/zomato-to-replace-jsw-steel-in-sensex/articleshow/115578235.cms"
     }
   ],
   "pulsebyzerodha": [
-    {
-      "href": "https://www.ndtvprofit.com/business/india-bharat-food-drug-administration-sitharaman-pharmaceutical-standards"
-    },
-    {
-      "href": "https://www.ndtvprofit.com/business/the-boeing-737-max-and-other-airplane-models-are-still-very-safe-for-travel"
-    },
     {
       "href": "https://www.thehindu.com/business/india-now-should-focus-on-having-its-own-pharmaceutical-standards-fm/article68899594.ece"
     },
@@ -157,30 +148,15 @@
     },
     {
       "href": "https://www.ndtvprofit.com/markets/buy-sell-or-hold-stocks-paytm-hcltech-sbi-axis-bank-cochin-shipyard"
+    },
+    {
+      "href": "https://www.ndtvprofit.com/business/cochin-shipyard-inks-mou-with-seatrium-letourneau-for-jack-up-rig-design"
+    },
+    {
+      "href": "https://www.ndtvprofit.com/business/jammu-and-kashmir-bank-launches-virtual-atm-to-boost-digital-access-in-rural-areas"
     }
   ],
   "cnbc": [
-    {
-      "href": "https://www.cnbc.com/2024/11/22/morgan-stanley-cautions-against-owning-overcrowded-stocks-for-risk-of-high-valuation-volatility.html"
-    },
-    {
-      "href": "https://www.cnbc.com/2024/11/22/the-case-for-altcoins-and-memes-as-bitcoin-faces-a-potential-correction.html"
-    },
-    {
-      "href": "https://www.cnbc.com/2024/11/22/musks-slash-government-agencies-and-regulation-benefit-empire.html"
-    },
-    {
-      "href": "https://www.cnbc.com/2024/11/22/paris-fc-arnault-family-plans-to-create-soccer-success.html"
-    },
-    {
-      "href": "https://www.cnbc.com/2024/11/22/cfp-roth-iras-are-a-no-brainer-for-20-somethings.html"
-    },
-    {
-      "href": "https://www.cnbc.com/2024/11/22/student-loan-legal-battles-delay-save-borrowers-path-to-forgiveness.html"
-    },
-    {
-      "href": "https://www.cnbc.com/2024/11/22/three-reasons-to-own-gold-into-2025.html"
-    },
     {
       "href": "https://www.cnbc.com/2024/11/22/were-repurchasing-shares-of-a-health-care-stock-that-we-recently-sold-much-higher-.html"
     },
@@ -189,6 +165,27 @@
     },
     {
       "href": "https://www.cnbc.com/2024/11/22/jim-cramer-is-bullish-on-cybersecurity-stocks-crowdstrike-palo-alto-networks.html"
+    },
+    {
+      "href": "https://www.cnbc.com/2024/11/22/this-one-time-covid-darling-is-undergoing-a-bearish-to-bullish-reversal-according-to-carter-worth.html"
+    },
+    {
+      "href": "https://www.cnbc.com/2024/11/22/spacex-coo-gwynne-shotwell-shares-vision-for-companys-future.html"
+    },
+    {
+      "href": "https://www.cnbc.com/2024/11/22/top-10-sp-500-stock-winners-since-election-day.html"
+    },
+    {
+      "href": "https://www.cnbc.com/2024/11/22/goldman-sachs-says-2025-will-be-the-year-of-generating-income.html"
+    },
+    {
+      "href": "https://www.cnbc.com/2024/11/22/the-portfolios-biggest-stock-winners-and-laggards-for-the-week.html"
+    },
+    {
+      "href": "https://www.cnbc.com/2024/11/22/stock-market-next-week-outlook-for-nov-25-29-2024.html"
+    },
+    {
+      "href": "https://www.cnbc.com/2024/11/22/salesforce-ceo-rips-microsofts-ai-efforts-why-were-not-picking-sides.html"
     }
   ],
   "indianexpress": [
@@ -199,19 +196,19 @@
       "href": "https://www.financialexpress.com/photos/business-gallery/3667838/delhis-air-quality-plummets-national-capital-gasping-for-breath-as-aqi-dips-to-severe-plus-category-in-pictures/"
     },
     {
-      "href": "https://www.financialexpress.com/india-news/mulund-election-result-2024-maharashtra-mulund-assembly-election-2024-winner-runner-up-party-wise-candidate-list/3672319/"
+      "href": "https://www.financialexpress.com/india-news/shivadi-election-result-2024-maharashtra-shivadi-assembly-election-2024-winner-runner-up-party-wise-candidate-list/3672426/"
     },
     {
-      "href": "https://www.financialexpress.com/india-news/magathane-election-result-2024-maharashtra-magathane-assembly-election-2024-winner-runner-up-party-wise-candidate-list/3672316/"
+      "href": "https://www.financialexpress.com/india-news/worli-election-result-2024-maharashtra-worli-assembly-election-2024-winner-runner-up-party-wise-candidate-list/3672423/"
     },
     {
-      "href": "https://www.financialexpress.com/india-news/dahisar-election-result-2024-maharashtra-dahisar-assembly-election-2024-winner-runner-up-party-wise-candidate-list/3672313/"
+      "href": "https://www.financialexpress.com/india-news/mahim-election-result-2024-maharashtra-mahim-assembly-election-2024-winner-runner-up-party-wise-candidate-list/3672420/"
     },
     {
-      "href": "https://www.financialexpress.com/india-news/borivali-election-result-2024-maharashtra-borivali-assembly-election-2024-winner-runner-up-party-wise-candidate-list/3672310/"
+      "href": "https://www.financialexpress.com/business/industry-techm-partners-with-60-70-gccs-for-specialised-services-3673998/"
     },
     {
-      "href": "https://www.financialexpress.com/india-news/belapur-election-result-2024-maharashtra-belapur-assembly-election-2024-winner-runner-up-party-wise-candidate-list/3672307/"
+      "href": "https://www.financialexpress.com/business/industry-oberoi-hotels-plans-multiple-properties-to-cash-in-on-upscale-holiday-demand-3674114/"
     },
     {
       "href": "https://www.financialexpress.com/market/cafeinvest-not-certain-about-vertical-recovery-for-markets-as-challenges-plenty-says-geojit-financial-services-3668204/"
@@ -223,36 +220,5 @@
       "href": "https://www.financialexpress.com/market/cafeinvest-short-term-outlook-for-markets-carry-optimistic-undertone-says-religare-broking-3670359/"
     }
   ],
-  "hindustantimes": [
-    {
-      "href": "https://www.hindustantimes.com/videos/lord-meghnad-desai-on-india-canada-row-and-how-the-khalistan-problem-in-uk-threatens-indias-unity-101732297913948.html"
-    },
-    {
-      "href": "https://www.hindustantimes.com/videos/maharashtra-election-results-shinde-vs-dighe-and-thackeray-vs-deora-key-battles-fadnavis-pawar-101732298134942.html"
-    },
-    {
-      "href": "https://www.hindustantimes.com/lifestyle/fashion/radhika-merchant-rewears-her-stunning-lehenga-from-isha-ambanis-wedding-proves-repeating-outfits-is-totally-stylish-101732285151815.html"
-    },
-    {
-      "href": "https://www.hindustantimes.com/cricket/virat-kohli-ravichandran-ashwin-deliver-powerful-speech-while-handing-debut-caps-to-nitish-kumar-reddy-harshit-rana-101732276119329.html"
-    },
-    {
-      "href": "https://www.hindustantimes.com/cricket/siraj-gets-in-labuschagnes-face-during-heated-exchange-virat-kohli-adds-fuel-to-fire-dsp-se-panga-nahi-remind-fans-101732290449969.html"
-    },
-    {
-      "href": "https://www.hindustantimes.com/entertainment/bollywood/sonam-kapoor-reveals-she-was-trolled-for-having-facial-hair-i-was-traumatised-by-it-101732290045987.html"
-    },
-    {
-      "href": "https://www.hindustantimes.com/india-news/baba-siddique-murder-man-who-provided-financial-support-to-suspects-arrested-101732282761645.html"
-    },
-    {
-      "href": "https://www.hindustantimes.com/india-news/delhi-hc-says-civic-administration-in-capital-has-collapsed-political-class-busy-selling-slogans-101732291662093.html"
-    },
-    {
-      "href": "https://www.hindustantimes.com/india-news/manipur-to-get-additional-90-capf-companies-to-maintain-peace-says-state-security-advisor-101732284834727.html"
-    },
-    {
-      "href": "https://www.hindustantimes.com/india-news/maharashtra-jharkhand-election-results-nda-seeks-dominance-india-bloc-eyes-comeback-101732292395028.html"
-    }
-  ]
+  "hindustantimes": []
 }

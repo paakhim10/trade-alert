@@ -124,13 +124,13 @@ class TribuneScrapper {
         }
         console.log("Saving article in Database:", article.title);
         try {
-          await TheTimesOfIndia.create({
+          await Tribune.create({
             title: article.title,
             link: article.link,
             content: article.content,
           });
         } catch (err) {
-          console.log("Error in saving article", href);
+          console.log("Error in saving article", err);
         }
       }
 
