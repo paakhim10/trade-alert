@@ -1,48 +1,97 @@
-# Major Project
+# Trade Alert 📈
 
-## Project Description
+A real-time financial news analysis system that uses AI to provide actionable stock market insights. The system scrapes news from multiple sources, analyzes its potential impact on stocks using LLM, and sends timely notifications to users.
 
-Trade-Alert is a notification system that keeps users updated on critical news impacting their stock portfolios. It simplifies staying informed by delivering timely notifications for important articles, eliminating the need to monitor multiple platforms in today’s fast-paced market.
+## 🌟 Features
 
-## Key Features
+- Real-time news scraping from 8 major financial news portals
+- AI-powered news analysis using Groq's LLM APIs
+- Automated stock impact prediction
+- Real-time notifications via Firebase Cloud Messaging
+- Email alerts through Nodemailer
+- Responsive web interface built with MERN stack
+- Docker containerization for scalable deployment
 
-**Personalized Notifications:** Users receive notifications tailored to their specific stock portfolio, ensuring they stay informed about relevant news.<br>
-**AI/ML Integration:** Leveraging advanced Artificial Intelligence and Machine Learning algorithms, Red Alert identifies and prioritizes news articles based on their potential impact on the user's investments.<br>
-**Efficient Information Delivery:** Red Alert minimizes information overload by delivering only the most critical news articles, allowing users to focus on key updates without sifting through countless irrelevant sources.<br>
-**MERN Stack:** The application is built using the MERN (MongoDB, Express.js, React.js, Node.js) stack, providing a robust and scalable foundation for development.
+## Built after designing
 
-## How It Works
+[Checkout the initial figma design](https://www.figma.com/design/2vzfnx0l4Ay1ebJJy0YIMY/Red-Alert?node-id=0-1&t=sN537kqPnqVjTkzr-1)
 
-**User Profile Setup:** Users create a profile and input their stock portfolio details.<br>
-**AI Analysis:** Red Alert's AI algorithms continuously monitor news sources and analyze articles to identify those relevant to the user's portfolio.<br>
-**Notification Delivery:** Red Alert sends a notification to the user's preferred device when significant news is detected, ensuring timely access to important information.
+## 🎥 Demo
 
-## Benefits
+[Watch the demo video](https://youtu.be/BYqgeYKpoJs)
 
-**Stay Ahead in the Game**: Users will be a step ahead in gaining relevant information about their stock portfolio among other retail investors.<br>
-**Time-Saving**: Users would not have to read irrelevant articles about the things that they do not need to worry about.<br>
-**Decision Making**: Showing only the news with priority level will not manipulate the user about a certain stock, it will give the user the ability to read the articile and make decision of buying and selling themselves.
+## 📸 Screenshots of pages not in Demo
 
-## Why Red Alert?
+### Home Page
 
-**Save Time:** No need to constantly monitor multiple news sources for updates.<br>
-**Stay Informed:** Receive timely notifications about critical news affecting your investments.<br>
-**Personalized Experience:** Tailored notifications ensure relevance to your specific stock portfolio.<br>
-**Efficiency:** Focus on essential updates without getting overwhelmed by irrelevant information.
+![Home Page](screenshots/home.png)
 
-## Tech Stack Used
+### Responsive Design
 
-- **React** - To build a dynamic frontend to capability to render dynamically<br>
-- **Express** - To build the REST APIs with protected routes using JWT and verification mail to avoid fake accounts.<br>
-- **Node** - For overall javascript run time environment, used on both frontend and backend<br>
-- **MongoDB** - Nosql database to store user information<br>
-- **AI/Ml** - Different opensource LLMs like llama and mixtral are being planned to used.  
+![Responsive Layout](screenshots/responsive.png)
 
-## How to use the Project
+### Notifications
 
-- Clone the project
-- Install all the dependencies in the frontend and backend folder using npm install command from your console.
-- Create your .env files in both frontend and backend
-- Inside your frontend .env write VITE_SERVER_URL=(something if you want to host) and VITE_LOCALHOST = `http://localhost:8000`
-- Inside your backend .env write PORT=8000, EMAIL_ID= Your email (for verification mail during sign up), APP_PASSWORD = (password of your google email service for nodemailer), CORS_ORIGIN = `http://localhost:5173`, MONGODB_URI = )(MongoDB atlas URL), JWT_SECRET = 1234 (JWT Token for your)
-- Run the frontend and backend using npm run dev command from the console.
+![Email Notification](screenshots/email-notification.png)
+![Web App Notification](screenshots/app-notification.png)
+
+## 🏗️ Architecture
+
+![System Architecture](screenshots/architecture.png)
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 16+
+- MongoDB
+- Docker & Docker Compose
+- Firebase account
+- Groq API key
+
+### How to run the project
+
+1. Clone the repository
+
+    ```bash
+    git clone https://github.com/harshsharma20503/trade-alert.git
+    cd trade-alert
+    ```
+
+2. Install dependencies
+
+    ```bash
+    # Install backend dependencies
+    cd backend
+    npm install
+
+    # Install frontend dependencies
+    cd ../frontend
+    npm install
+
+    # Install news-bots dependencies
+    cd ../news-bots
+    npm install
+
+    # Install notification-service dependencies
+    cd ../notification-service
+    npm install
+    ```
+
+3. Set up environment variables
+
+    - Create .env in all the folders and set the credentials as given the .env.example
+
+4. Create a mongodb database and insert the trade-alert-companies.json data into a companies collection.
+
+5. Get your firebase service account and save it in notification-system folder and name it as `firebase-service-account-config.json`.
+
+6. Run the project
+
+    - See the scripts from the package.json to run the project with appropiate commands.
+
+## 👥 Team
+
+- Harsh Sharma ([@harshsharma20503](https://github.com/harshsharma20503))
+- Paakhi Maheshwari ([@paakhim10](https://github.com/paakhim10))
+- Deepti Jain ([@deepti1028](https://github.com/deepti1028))
