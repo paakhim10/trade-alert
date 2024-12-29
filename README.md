@@ -32,8 +32,12 @@ A real-time financial news analysis system that uses AI to provide actionable st
 
 ### Notifications
 
-![Email Notification](screenshots/email-notification.png)
-![Web App Notification](screenshots/app-notification.png)
+<div align="center">
+  <div style="display: flex; justify-content: center; gap: 20px;">
+    <img src="screenshots/email-notification.png" alt="Email Notification" width="400" />
+    <img src="screenshots/app-notification.png" alt="Web App Notification" width="400" />
+  </div>
+</div>
 
 ## 🏗️ Architecture
 
