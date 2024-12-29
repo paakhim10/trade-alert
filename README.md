@@ -2,7 +2,7 @@
 
 ## Project Description
 
-Red Alert is a notification system that keeps users informed about critical news affecting their stock portfolio. In today's fast-paced market, staying updated on relevant information can be overwhelming with a flood of news from various sources. Red Alert streamlines this process by delivering timely notifications for important articles directly to users, eliminating the need to constantly monitor multiple platforms.
+Trade-Alert is a notification system that keeps users updated on critical news impacting their stock portfolios. It simplifies staying informed by delivering timely notifications for important articles, eliminating the need to monitor multiple platforms in today’s fast-paced market.
 
 ## Key Features
 
